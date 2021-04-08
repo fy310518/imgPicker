@@ -54,7 +54,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$var.androidx"
     implementation "androidx.recyclerview:recyclerview:$var.androidx"
     implementation "androidx.constraintlayout:constraintlayout:$var.constraintLayout"
-//    implementation project(path: ':baseLibrary')
+
+    implementation 'com.github.fy310518:fyLibraryx:0.0.2'
 
     //PhotoView
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'

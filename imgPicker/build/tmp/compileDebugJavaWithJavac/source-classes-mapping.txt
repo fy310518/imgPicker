@@ -11,11 +11,12 @@ com/fy/bean/ImageItem.java
  com.fy.bean.ImageItem
 com/fy/img/picker/databinding/AdapterCameraBinding.java
  com.fy.img.picker.databinding.AdapterCameraBinding
-com/fy/img/picker/preview/PicturePreviewActivity.java
- com.fy.img.picker.preview.PicturePreviewActivity
- com.fy.img.picker.preview.PicturePreviewActivity$1
- com.fy.img.picker.preview.PicturePreviewActivity$2
- com.fy.img.picker.preview.PicturePreviewActivity$3
+com/fy/img/picker/multiselect/ImgPickerActivity.java
+ com.fy.img.picker.multiselect.ImgPickerActivity
+ com.fy.img.picker.multiselect.ImgPickerActivity$1
+ com.fy.img.picker.multiselect.ImgPickerActivity$2
+ com.fy.img.picker.multiselect.ImgPickerActivity$2$1
+ com.fy.img.picker.multiselect.ImgPickerActivity$3
 com/fy/bean/ImageFolder.java
  com.fy.bean.ImageFolder
 com/fy/luban/Luban.java
@@ -59,9 +60,8 @@ com/fy/luban/Engine.java
  com.fy.luban.Engine
 com/fy/img/picker/databinding/AdapterImageBinding.java
  com.fy.img.picker.databinding.AdapterImageBinding
-com/fy/img/picker/multiselect/ImgPickerActivity.java
- com.fy.img.picker.multiselect.ImgPickerActivity
- com.fy.img.picker.multiselect.ImgPickerActivity$1
- com.fy.img.picker.multiselect.ImgPickerActivity$2
- com.fy.img.picker.multiselect.ImgPickerActivity$2$1
- com.fy.img.picker.multiselect.ImgPickerActivity$3
+com/fy/img/picker/preview/PicturePreviewActivity.java
+ com.fy.img.picker.preview.PicturePreviewActivity
+ com.fy.img.picker.preview.PicturePreviewActivity$1
+ com.fy.img.picker.preview.PicturePreviewActivity$2
+ com.fy.img.picker.preview.PicturePreviewActivity$3
