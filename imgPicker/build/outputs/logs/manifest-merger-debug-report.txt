@@ -1,0 +1,77 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+	package
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:2:5-32
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:1-33:12
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:1:11-69
+application
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:4:5-31:19
+	android:supportsRtl
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:7:9-35
+	android:label
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:6:9-41
+	android:allowBackup
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:5:9-35
+activity#com.fy.img.picker.multiselect.ImgPickerActivity
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:10:9-18:20
+	android:screenOrientation
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:13:13-49
+	android:launchMode
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:12:13-43
+	android:name
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:11:13-58
+intent-filter#action:name:${applicationId}.picker.ImgPickerActivity+category:name:android.intent.category.DEFAULT
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:14:13-17:29
+action#${applicationId}.picker.ImgPickerActivity
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:15:17-84
+	android:name
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:15:25-81
+category#android.intent.category.DEFAULT
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:16:17-76
+	android:name
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:16:27-73
+activity#com.fy.img.picker.preview.PicturePreviewActivity
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:21:9-29:20
+	android:screenOrientation
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:24:13-49
+	android:launchMode
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:23:13-43
+	android:name
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:22:13-59
+intent-filter#action:name:${applicationId}.preview.PicturePreviewActivity+category:name:android.intent.category.DEFAULT
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:25:13-28:29
+action#${applicationId}.preview.PicturePreviewActivity
+ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:26:17-90
+	android:name
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml:26:25-87
+uses-sdk
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+		ADDED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml
+		INJECTED from D:\Android\WorkSpace\ImApp\imgPicker\src\main\AndroidManifest.xml

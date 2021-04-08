@@ -1,0 +1,67 @@
+com/fy/img/picker/preview/LocalImageHolderView.java
+ com.fy.img.picker.preview.LocalImageHolderView
+ com.fy.img.picker.preview.LocalImageHolderView$1
+com/fy/luban/OnCompressListener.java
+ com.fy.luban.OnCompressListener
+com/fy/img/picker/BuildConfig.java
+ com.fy.img.picker.BuildConfig
+com/fy/img/picker/databinding/PopImgfolderBinding.java
+ com.fy.img.picker.databinding.PopImgfolderBinding
+com/fy/bean/ImageItem.java
+ com.fy.bean.ImageItem
+com/fy/img/picker/databinding/AdapterCameraBinding.java
+ com.fy.img.picker.databinding.AdapterCameraBinding
+com/fy/img/picker/preview/PicturePreviewActivity.java
+ com.fy.img.picker.preview.PicturePreviewActivity
+ com.fy.img.picker.preview.PicturePreviewActivity$1
+ com.fy.img.picker.preview.PicturePreviewActivity$2
+ com.fy.img.picker.preview.PicturePreviewActivity$3
+com/fy/bean/ImageFolder.java
+ com.fy.bean.ImageFolder
+com/fy/luban/Luban.java
+ com.fy.luban.Luban
+ com.fy.luban.Luban$1
+ com.fy.luban.Luban$Builder
+com/fy/img/picker/ImagePicker.java
+ com.fy.img.picker.ImagePicker
+com/fy/img/picker/PickerConfig.java
+ com.fy.img.picker.PickerConfig
+com/fy/img/picker/databinding/ActImgPickerBinding.java
+ com.fy.img.picker.databinding.ActImgPickerBinding
+com/fy/img/picker/databinding/LayoutPreviewBinding.java
+ com.fy.img.picker.databinding.LayoutPreviewBinding
+com/fy/img/picker/databinding/AdapterImgfolderBinding.java
+ com.fy.img.picker.databinding.AdapterImgfolderBinding
+com/fy/img/picker/folder/ImageDataSource.java
+ com.fy.img.picker.folder.ImageDataSource
+ com.fy.img.picker.folder.ImageDataSource$OnImagesLoadedListener
+com/fy/img/picker/databinding/ViewpagerPreviewBinding.java
+ com.fy.img.picker.databinding.ViewpagerPreviewBinding
+com/fy/img/picker/databinding/ImgActivityHeadBinding.java
+ com.fy.img.picker.databinding.ImgActivityHeadBinding
+com/fy/img/picker/view/CropImageView.java
+ com.fy.img.picker.view.CropImageView
+ com.fy.img.picker.view.CropImageView$1
+ com.fy.img.picker.view.CropImageView$InnerHandler
+ com.fy.img.picker.view.CropImageView$OnBitmapSaveCompleteListener
+ com.fy.img.picker.view.CropImageView$Style
+com/fy/img/picker/folder/ImageFolderAdapter.java
+ com.fy.img.picker.folder.ImageFolderAdapter
+com/fy/img/picker/multiselect/ImgPickersAdapter.java
+ com.fy.img.picker.multiselect.ImgPickersAdapter
+ com.fy.img.picker.multiselect.ImgPickersAdapter$1
+ com.fy.img.picker.multiselect.ImgPickersAdapter$Bulder
+ com.fy.img.picker.multiselect.ImgPickersAdapter$OnCheckClickListener
+ com.fy.img.picker.multiselect.ImgPickersAdapter$OnImageItemClickListener
+com/fy/luban/Checker.java
+ com.fy.luban.Checker
+com/fy/luban/Engine.java
+ com.fy.luban.Engine
+com/fy/img/picker/databinding/AdapterImageBinding.java
+ com.fy.img.picker.databinding.AdapterImageBinding
+com/fy/img/picker/multiselect/ImgPickerActivity.java
+ com.fy.img.picker.multiselect.ImgPickerActivity
+ com.fy.img.picker.multiselect.ImgPickerActivity$1
+ com.fy.img.picker.multiselect.ImgPickerActivity$2
+ com.fy.img.picker.multiselect.ImgPickerActivity$2$1
+ com.fy.img.picker.multiselect.ImgPickerActivity$3
