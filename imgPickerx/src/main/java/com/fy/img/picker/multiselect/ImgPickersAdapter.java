@@ -31,7 +31,7 @@ import java.util.List;
  * 图片选择（单选、多选） RecyclerView 适配器
  * Created by fangs on 2017/8/7.
  */
-public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem> {
+public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder> {
 
     public static String newFile = "";//最新的拍照图片路径
 
