@@ -50,26 +50,27 @@ public class LocalImageHolderView extends Holder<ImageItem> {
 
     @Override
     public void updateUI(ImageItem imgData) {
-        if (Validator.isNetAddress(imgData.path)){
-            ImgLoadUtils.loadImgProgress(imgData.path, R.mipmap.default_image, imageView, new ImgLoadCallBack<Drawable>(){
-                @Override
-                public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                    llProgress.setVisibility(View.GONE);
-                    return false;
-                }
+        if (Validator.isNetAddress(imgData.path)) {
+            ImgLoadUtils.loadImgProgress(imgData.path, ImgLoadUtils.getDefaultOption(R.mipmap.default_image),
+                    imageView, new ImgLoadCallBack<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            llProgress.setVisibility(View.GONE);
+                            return false;
+                        }
 
-                @Override
-                public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                    llProgress.setVisibility(View.GONE);
-                    return false;
-                }
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            llProgress.setVisibility(View.GONE);
+                            return false;
+                        }
 
-                @Override
-                public void onProgress(int progress) {
-                    L.e("glide", progress + "%");
-                    activity.runOnUiThread(() -> tvLoadProgress.setText(ResUtils.getReplaceStr(R.string.loadProgress, progress)));
-                }
-            });
+                        @Override
+                        public void onProgress(int progress) {
+                            L.e("glide", progress + "%");
+                            activity.runOnUiThread(() -> tvLoadProgress.setText(ResUtils.getReplaceStr(R.string.loadProgress, progress)));
+                        }
+                    });
         } else {//加载本地图片
             ImgLoadUtils.loadImage(imgData.path, R.mipmap.default_image, imageView);
         }
