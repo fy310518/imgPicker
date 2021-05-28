@@ -136,7 +136,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseActivit
                         .create(this));
 
         //设置adapter
-        mImgListAdapter = new ImgPickersAdapter.Bulder()
+        mImgListAdapter = new ImgPickersAdapter.Builder()
                 .setSelectLimit(maxCount)
                 .setImageFolder(imageFolder)
                 .setClickListener(num -> setViewStutas(num))

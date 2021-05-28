@@ -19,4 +19,19 @@
         android:button="@null"
         android:background="@drawable/selector_item_checked"
         android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/txtVideoFlag"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="0:10 s"
+        android:textColor="@color/white"
+        android:singleLine="true"
+        android:drawableLeft="@mipmap/video_icon"
+        android:textSize="@dimen/txt_small_much"
+        android:paddingLeft="@dimen/spacing_small"
+        android:paddingRight="@dimen/spacing_small"
+        android:gravity="right|center_vertical"
+        android:layout_alignParentBottom="true"/>
+
 </com.fy.baselibrary.widget.CheckableLayout>

@@ -38,7 +38,9 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             MediaStore.Images.Media.WIDTH,          //图片的宽度，int型  1920
             MediaStore.Images.Media.HEIGHT,         //图片的高度，int型  1080
             MediaStore.Images.Media.MIME_TYPE,      //图片的类型     image/jpeg
-            MediaStore.Images.Media.DATE_ADDED};    //图片被添加的时间，long型  1450518608
+            MediaStore.Images.Media.DATE_ADDED,     //图片被添加的时间，long型  1450518608
+            MediaStore.Images.Media.DURATION        //视频、音频的时长，long型  132492
+    };
 
     private FragmentActivity activity;
     private OnImagesLoadedListener loadedListener;                     //图片加载完成的回调接口
@@ -88,18 +90,21 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         CursorLoader cursorLoader = null;
-        //扫描所有图片
-        if (TextUtils.isEmpty(path))
-            cursorLoader = new CursorLoader(activity, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
+//        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+
+        if (TextUtils.isEmpty(path)) {
+            //扫描所有图片
+            cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     null, null,
                     IMAGE_PROJECTION[6] + " DESC");
-        //扫描某个图片文件夹
-        else
-            cursorLoader = new CursorLoader(activity, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
+        }
+
+        else { //扫描某个文件夹
+            cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%'",
                     null,
                     IMAGE_PROJECTION[6] + " DESC");
-
+        }
         return cursorLoader;
     }
 
@@ -111,21 +116,25 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             do{
                 //查询数据
                 String imagePath = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[1]));
-                if (!FileUtils.fileIsExist(imagePath)) continue;//文件不存在 结束本次循环
-
                 String imageName = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[0]));
                 long imageSize = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[2]));
                 int imageWidth = data.getInt(data.getColumnIndexOrThrow(IMAGE_PROJECTION[3]));
                 int imageHeight = data.getInt(data.getColumnIndexOrThrow(IMAGE_PROJECTION[4]));
                 String imageMimeType = data.getString(data.getColumnIndexOrThrow(IMAGE_PROJECTION[5]));
                 long imageAddTime = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[6]));
+                long duration = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[7]));
+
+                //文件不存在 结束本次循环
+                if (!FileUtils.fileIsExist(imagePath) || imageSize <= 0 || TextUtils.isEmpty(imageMimeType)
+                     || (!imageMimeType.equals("image/jpeg") && !imageMimeType.equals("video/mp4")) ){
+                    continue;
+                }
                 //封装实体
                 ImageItem imageItem = new ImageItem();
                 imageItem.name = imageName;
                 imageItem.path = imagePath;
                 imageItem.size = imageSize;
-
-                if (imageSize <= 0) continue;
+                imageItem.duration = duration;
                 imageItem.setWidth(imageWidth + "");
                 imageItem.setHeight(imageHeight + "");
                 imageItem.mimeType = imageMimeType;

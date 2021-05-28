@@ -17,6 +17,7 @@ import com.fy.baselibrary.rv.adapter.MultiTypeSupport;
 import com.fy.baselibrary.utils.PhotoUtils;
 import com.fy.baselibrary.utils.ResUtils;
 import com.fy.baselibrary.utils.ScreenUtils;
+import com.fy.baselibrary.utils.TimeUtils;
 import com.fy.baselibrary.utils.imgload.ImgLoadUtils;
 import com.fy.baselibrary.utils.notify.T;
 import com.fy.bean.ImageFolder;
@@ -39,7 +40,7 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
     protected List<ImageItem> selectedImages;   //所有已经选中的图片
     private OnImageItemClickListener listener;   //图片被点击的监听
     private OnCheckClickListener clickListener;  //checkBox点击监听
-    private ImagePicker imagePicker;
+    private int selectLimit;
 
     private ImgPickersAdapter(Context context, List<ImageItem> datas) {
         super(context, datas, new MultiTypeSupport<ImageItem>(){
@@ -75,6 +76,9 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
                 ((Activity) mContext).startActivityForResult(intent, ImagePicker.Photograph);
             });
         } else {
+            holder.setVisibility(R.id.txtVideoFlag, imgItem.mimeType.equals("video/mp4"));
+            holder.setText(R.id.txtVideoFlag, TimeUtils.getTime((int) (imgItem.duration * 0.001)));
+
             ImageView ivThumb = holder.getView(R.id.iv_thumb);
             ivThumb.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, mImageSize)); //让图片是个正方形
             ImgLoadUtils.loadImage(imgItem.path, R.mipmap.default_image, ivThumb);
@@ -83,7 +87,7 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
             });
 
             CheckBox cbCheck = holder.getView(R.id.cb_check);
-            if (imagePicker.getSelectLimit() < 1){
+            if (selectLimit < 1){
                 cbCheck.setVisibility(View.GONE);
             } else {
                 if (imgItem.isSelect) {
@@ -93,7 +97,6 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
                 }
 
                 cbCheck.setOnClickListener(v -> {
-                    int selectLimit = imagePicker.getSelectLimit();
                     if (cbCheck.isChecked() && selectedImages.size() >= selectLimit) {
                         T.showLong(ResUtils.getReplaceStr(R.string.select_limit, selectLimit));
                         cbCheck.setChecked(false);
@@ -132,8 +135,8 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
         this.clickListener = clickListener;
     }
 
-    public void setImagePicker(ImagePicker imagePicker) {
-        this.imagePicker = imagePicker;
+    public void setSelectLimit(int selectLimit) {
+        this.selectLimit = selectLimit;
     }
 
     public List<ImageItem> getSelectedImages() {
@@ -159,40 +162,38 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
     }
 
 
-    static class Bulder{
-        public ImagePicker parames;
+    static class Builder{
+        private int selectLimit;
         ImageFolder imageFolder;
 
         OnImageItemClickListener listener;
         OnCheckClickListener clickListener;
 
-        public Bulder() {
-            this.parames = new ImagePicker();
-        }
+        public Builder() {}
 
-        public Bulder setSelectLimit(int selectLimit) {
-            this.parames.setSelectLimit(selectLimit);
+        public Builder setSelectLimit(int selectLimit) {
+            this.selectLimit = selectLimit;
             return this;
         }
 
-        public Bulder setImageFolder(ImageFolder imageFolder) {
+        public Builder setImageFolder(ImageFolder imageFolder) {
             this.imageFolder = imageFolder;
             return this;
         }
 
-        public Bulder setOnImageItemClickListener(OnImageItemClickListener listener){
+        public Builder setOnImageItemClickListener(OnImageItemClickListener listener){
             this.listener = listener;
             return this;
         }
 
-        public Bulder setClickListener(OnCheckClickListener clickListener) {
+        public Builder setClickListener(OnCheckClickListener clickListener) {
             this.clickListener = clickListener;
             return this;
         }
 
         public ImgPickersAdapter create(Context context, List<ImageItem> datas){
             ImgPickersAdapter adapter = new ImgPickersAdapter(context, datas);
-            adapter.setImagePicker(parames);
+            adapter.setSelectLimit(selectLimit);
             adapter.setSelectedImages(imageFolder.images);
             adapter.setOnImageItemClickListener(listener);
             adapter.setClickListener(clickListener);
@@ -200,4 +201,5 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
             return adapter;
         }
     }
+
 }

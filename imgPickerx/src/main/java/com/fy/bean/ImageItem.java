@@ -13,7 +13,6 @@ import java.io.Serializable;
  */
 public class ImageItem implements Serializable, Comparable<ImageItem> {
 
-
     public ImageItem(String path) {
         this.path = path;
     }
@@ -31,6 +30,8 @@ public class ImageItem implements Serializable, Comparable<ImageItem> {
     public long size = 0;     //图片的大小
     public String mimeType;   //图片的类型
     public long addTime;      //图片的创建时间
+    public long duration;     //音视频的时长
+
     public boolean isSelect;  //是否选中
 
     private String suspectId;
