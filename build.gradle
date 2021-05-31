@@ -13,7 +13,7 @@ buildscript {
                 androidx         : "1.1.0",
                 constraintLayout : "2.0.1",
                 work_version     : "2.5.0",
-                fyLibraryx       : "0.1.4"
+                fyLibraryx       : "0.1.5"
         ]
     }
     repositories {

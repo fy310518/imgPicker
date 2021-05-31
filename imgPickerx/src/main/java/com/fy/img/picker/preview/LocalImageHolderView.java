@@ -16,9 +16,9 @@ import com.fy.baselibrary.utils.Validator;
 import com.fy.baselibrary.utils.imgload.ImgLoadUtils;
 import com.fy.baselibrary.utils.imgload.imgprogress.ImgLoadCallBack;
 import com.fy.baselibrary.utils.notify.L;
+import com.fy.baselibrary.widget.RoundProgressBar;
 import com.fy.bean.ImageItem;
 import com.fy.img.picker.R;
-import com.fy.img.picker.view.RoundProgressBar;
 import com.github.chrisbanes.photoview.PhotoView;
 
 /**
