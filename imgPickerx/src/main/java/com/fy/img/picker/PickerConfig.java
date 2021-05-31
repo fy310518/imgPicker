@@ -30,4 +30,27 @@ public class PickerConfig {
     public static final int SINGLE_MODE = 25535;
     /** 多选模式 */
     public static final int MULTIPLE_MODE = 25536;
+
+
+    /**
+     * 选择的图片文件夹 key
+     */
+    public static final String imgFolderkey = "ImageFolder";
+    /**
+     * 图片选择 请求码
+     */
+    public static final int Picture_Selection = 1001;
+    /**
+     * 图片预览 请求码
+     */
+    public static final int Picture_Preview = 10002;
+    /**
+     * 拍照 请求码
+     */
+    public static final int Photograph = 10003;
+    /**
+     * 图片裁剪 请求码
+     */
+    public static final int KJNova_Clipper = 10005;
+
 }

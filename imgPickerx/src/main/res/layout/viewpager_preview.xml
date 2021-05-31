@@ -7,36 +7,47 @@
     android:background="@android:color/transparent"
     android:orientation="vertical">
 
+    <!-- 视频 -->
+    <RelativeLayout
+        android:id="@+id/rvLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/imgVideo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/videoPlay"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:scaleType="center"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/video_play_icon" />
+    </RelativeLayout>
+
+
+    <!--  图片  -->
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/subImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <LinearLayout
-        android:id="@+id/llProgress"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
+
+    <!--  图片加载进度布局  -->
+    <com.fy.img.picker.view.RoundProgressBar
+        android:id="@+id/loadProgress"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="center"
-        android:background="#80dddddd"
-        android:orientation="vertical"
-        android:visibility="gone">
+        app:bgColorRound="#C3C3C3"
+        app:circleWidthRound="3dp"
+        app:currentColorRound="#25B7FA"
+        app:loadSpeedRound="10"
+        app:textColorRound="@android:color/holo_red_light"
+        app:textSizeRound="12sp" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgLoad"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/vector_load_success"
-            tools:ignore="VectorDrawableCompat" />
-
-        <TextView
-            android:id="@+id/tvLoadProgress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="@dimen/spacing_small"
-            android:text=""
-            android:textColor="@color/txtSecondColor"
-            android:textSize="@dimen/txt_small" />
-    </LinearLayout>
 </FrameLayout>

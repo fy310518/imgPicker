@@ -19,4 +19,10 @@
     <!-- 点击  背景变化 颜色 -->
     <color name="selection">#4dd6d6d6</color>
 
+
+    <color name="rce_loading_data">#0099FF</color>
+    <color name="rce_loading_data_bk">#EEDEDEDE</color>
+    <color name="rce_loading_progress_initial">#D4F0F7</color>
+    <color name="rce_loading_progress_terminal">#0099FF</color>
+
 </resources>

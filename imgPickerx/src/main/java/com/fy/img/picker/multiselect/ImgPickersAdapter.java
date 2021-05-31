@@ -22,7 +22,7 @@ import com.fy.baselibrary.utils.imgload.ImgLoadUtils;
 import com.fy.baselibrary.utils.notify.T;
 import com.fy.bean.ImageFolder;
 import com.fy.bean.ImageItem;
-import com.fy.img.picker.ImagePicker;
+import com.fy.img.picker.PickerConfig;
 import com.fy.img.picker.R;
 
 import java.util.ArrayList;
@@ -73,7 +73,7 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
                 //拍照
                 Intent intent = PhotoUtils.takePicture((Activity) mContext);
                 newFile = intent.getStringExtra("newFilePath");
-                ((Activity) mContext).startActivityForResult(intent, ImagePicker.Photograph);
+                ((Activity) mContext).startActivityForResult(intent, PickerConfig.Photograph);
             });
         } else {
             holder.setVisibility(R.id.txtVideoFlag, imgItem.mimeType.equals("video/mp4"));

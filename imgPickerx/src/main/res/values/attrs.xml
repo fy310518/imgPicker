@@ -14,4 +14,14 @@
         </attr>
     </declare-styleable>
 
+
+    <declare-styleable name="RoundProgressBar">
+        <attr name="textSizeRound" format="dimension" />
+        <attr name="textColorRound" format="color" />
+        <attr name="bgColorRound" format="color" />
+        <attr name="currentColorRound" format="color" />
+        <attr name="circleWidthRound" format="dimension" />
+        <attr name="loadSpeedRound" format="integer" />
+    </declare-styleable>
+
 </resources>

@@ -5,8 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,18 +25,15 @@ import com.fy.baselibrary.application.IBaseActivity;
 import com.fy.baselibrary.base.ViewHolder;
 import com.fy.baselibrary.base.popupwindow.CommonPopupWindow;
 import com.fy.baselibrary.base.popupwindow.NicePopup;
-import com.fy.baselibrary.retrofit.RequestUtils;
 import com.fy.baselibrary.rv.divider.GridItemDecoration;
 import com.fy.baselibrary.utils.DensityUtils;
 import com.fy.baselibrary.utils.JumpUtils;
 import com.fy.baselibrary.utils.ResUtils;
-import com.fy.baselibrary.utils.cache.SpfAgent;
 import com.fy.baselibrary.utils.media.MediaScanner;
 import com.fy.baselibrary.utils.media.UpdateMedia;
 import com.fy.baselibrary.utils.notify.T;
 import com.fy.bean.ImageFolder;
 import com.fy.bean.ImageItem;
-import com.fy.img.picker.ImagePicker;
 import com.fy.img.picker.PickerConfig;
 import com.fy.img.picker.R;
 import com.fy.img.picker.databinding.ActImgPickerBinding;
@@ -46,7 +41,6 @@ import com.fy.img.picker.folder.ImageDataSource;
 import com.fy.img.picker.folder.ImageFolderAdapter;
 import com.fy.img.picker.preview.PicturePreviewActivity;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -174,13 +168,13 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseActivit
                             if (folderItem.images.size() > 0){
 //                                ImageItem imageItem = folderItem.images.get(0);
                                 //使 刚刚拍照的图片为选中状态
-//                                String filePath = SpfAgent.init("").getString(ImagePicker.newFilePath);
+//                                String filePath = SpfAgent.init("").getString(PickerConfig.newFilePath);
 //                                if (imageItem.path.equals(filePath) && selectedData.size() < maxCount) {
 //                                    imageItem.isSelect = true;
 //                                    selectedData.add(imageItem);
 //                                    setViewStutas(selectedData.size());
 //                                }
-//                                new SpfAgent(Constant.baseSpf).remove(ImagePicker.newFilePath, false);
+//                                new SpfAgent(Constant.baseSpf).remove(PickerConfig.newFilePath, false);
                             }
 
                             folderItem.images.add(0, new ImageItem(0));//添加拍照按钮
@@ -266,7 +260,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseActivit
             }
             List<ImageItem> selectedData = mImgListAdapter.getSelectedImages();
             Bundle bundle = new Bundle();
-            bundle.putSerializable(ImagePicker.imgFolderkey, new ImageFolder(selectedData));
+            bundle.putSerializable(PickerConfig.imgFolderkey, new ImageFolder(selectedData));
 
             JumpUtils.jumpResult(this, bundle);
 
@@ -320,7 +314,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseActivit
         }
         bundle.putSerializable(PickerConfig.KEY_ALREADY_SELECT, new ImageFolder(mImgListAdapter.getSelectedImages()));
 
-        JumpUtils.jump(this, PicturePreviewActivity.class, bundle, ImagePicker.Picture_Preview);
+        JumpUtils.jump(this, PicturePreviewActivity.class, bundle, PickerConfig.Picture_Preview);
     }
 
     @Override
@@ -328,10 +322,10 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseActivit
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                case ImagePicker.Picture_Preview:
+                case PickerConfig.Picture_Preview:
                     if (null != data) JumpUtils.jumpResult(this, data.getExtras());
                     break;
-                case ImagePicker.Photograph:
+                case PickerConfig.Photograph:
                     UpdateMedia.scanMedia(this, ImgPickersAdapter.newFile, new MediaScanner.OnMediaScannerCompleted(){
                         @Override
                         public void onScanCompleted() {

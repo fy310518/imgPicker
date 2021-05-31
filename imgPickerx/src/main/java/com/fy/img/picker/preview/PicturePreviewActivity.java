@@ -25,7 +25,6 @@ import com.fy.baselibrary.utils.ResUtils;
 import com.fy.baselibrary.utils.notify.T;
 import com.fy.bean.ImageFolder;
 import com.fy.bean.ImageItem;
-import com.fy.img.picker.ImagePicker;
 import com.fy.img.picker.PickerConfig;
 import com.fy.img.picker.R;
 import com.fy.img.picker.databinding.LayoutPreviewBinding;
@@ -162,7 +161,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseAc
         if (i == R.id.send) {//完成
             Bundle bundle = new Bundle();
             bundle.putSerializable("pickerImgData", imgFolder.images.get(mCurrentPosition));
-            bundle.putSerializable(ImagePicker.imgFolderkey, new ImageFolder(selectedImages));
+            bundle.putSerializable(PickerConfig.imgFolderkey, new ImageFolder(selectedImages));
             JumpUtils.jumpResult(PicturePreviewActivity.this, bundle);
         } else if (i == R.id.original_checkbox) {
             if (original_checkbox.isChecked() && selectedImages.size() >= max) {
