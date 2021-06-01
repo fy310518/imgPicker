@@ -73,9 +73,9 @@ public class LocalImageHolderView extends Holder<ImageItem> {
 
         rvLayout.setVisibility(View.GONE);
         imageView.setVisibility(View.VISIBLE);
-        loadProgress.setVisibility(View.VISIBLE);
 
         if (Validator.isNetAddress(imgData.path)) {
+            loadProgress.setVisibility(View.VISIBLE);
             ImgLoadUtils.loadImgProgress(imgData.path, ImgLoadUtils.getDefaultOption(R.mipmap.default_image),
                     imageView, new ImgLoadCallBack<Drawable>() {
                         @Override
