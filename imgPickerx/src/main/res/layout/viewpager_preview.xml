@@ -43,11 +43,11 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        app:bgColorRound="#C3C3C3"
+        app:bgColorRound="@color/txtSuperLight"
         app:circleWidthRound="3dp"
-        app:currentColorRound="#25B7FA"
+        app:currentColorRound="@color/appHeadBg"
         app:loadSpeedRound="10"
-        app:textColorRound="@android:color/holo_red_light"
+        app:textColorRound="@android:color/white"
         app:textSizeRound="12sp" />
 
 </FrameLayout>
