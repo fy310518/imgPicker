@@ -62,7 +62,7 @@ public class LocalImageHolderView extends Holder<ImageItem> {
 
     @Override
     public void updateUI(ImageItem imgData) {
-        if (imgData.mimeType.equals("video/mp4")){
+        if (imgData.getMimeType().equals("video/mp4")){
             rvLayout.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.GONE);
             videoPlay.setTag(imgData);
