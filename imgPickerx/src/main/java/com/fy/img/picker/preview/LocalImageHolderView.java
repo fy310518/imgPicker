@@ -65,7 +65,6 @@ public class LocalImageHolderView extends Holder<ImageItem> {
         if (imgData.mimeType.equals("video/mp4")){
             rvLayout.setVisibility(View.VISIBLE);
             imageView.setVisibility(View.GONE);
-            loadProgress.setVisibility(View.GONE);
             videoPlay.setTag(imgData);
             ImgLoadUtils.loadImage(imgData.path, R.mipmap.default_image, imgVideo);
             return;

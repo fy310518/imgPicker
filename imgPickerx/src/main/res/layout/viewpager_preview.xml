@@ -43,11 +43,13 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
+        android:visibility="gone"
         app:bgColorRound="@color/txtSuperLight"
         app:circleWidthRound="3dp"
         app:currentColorRound="@color/appHeadBg"
         app:loadSpeedRound="10"
         app:textColorRound="@android:color/white"
-        app:textSizeRound="12sp" />
+        app:textSizeRound="12sp"
+        tools:visibility="visible"/>
 
 </FrameLayout>
