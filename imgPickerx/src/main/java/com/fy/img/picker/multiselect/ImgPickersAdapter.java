@@ -10,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.fy.baselibrary.base.ViewHolder;
 import com.fy.baselibrary.rv.adapter.MultiCommonAdapter;
@@ -98,7 +99,7 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
 
                 cbCheck.setOnClickListener(v -> {
                     if (cbCheck.isChecked() && selectedImages.size() >= selectLimit) {
-                        T.showLong(ResUtils.getReplaceStr(R.string.select_limit, selectLimit));
+                        T.show(ResUtils.getReplaceStr(R.string.select_limit, selectLimit), Toast.LENGTH_LONG);
                         cbCheck.setChecked(false);
                     } else {
                         if (cbCheck.isChecked()) {

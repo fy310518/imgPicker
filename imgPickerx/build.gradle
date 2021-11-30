@@ -24,7 +24,7 @@ android {
         }
     }
 
-    viewBinding {
+    dataBinding {
         enabled = true
     }
 
@@ -55,6 +55,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:$var.androidx"
     implementation "androidx.constraintlayout:constraintlayout:$var.constraintLayout"
 
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
     implementation "com.github.fy310518:fyLibraryx:$var.fyLibraryx"
 
     //PhotoView

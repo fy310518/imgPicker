@@ -1,14 +1,13 @@
 package com.fy.img.picker.preview;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,7 +18,8 @@ import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.bigkoo.convenientbanner.listener.OnPageChangeListener;
 import com.fy.baselibrary.aop.annotation.StatusBar;
-import com.fy.baselibrary.application.IBaseActivity;
+import com.fy.baselibrary.application.mvvm.BaseViewModel;
+import com.fy.baselibrary.application.mvvm.IBaseMVVM;
 import com.fy.baselibrary.utils.JumpUtils;
 import com.fy.baselibrary.utils.ResUtils;
 import com.fy.baselibrary.utils.notify.T;
@@ -37,7 +37,7 @@ import java.util.List;
  * 图片预览activity
  * Created by fangs on 2017/7/6.
  */
-public class PicturePreviewActivity extends AppCompatActivity implements IBaseActivity, View.OnClickListener {
+public class PicturePreviewActivity extends AppCompatActivity implements IBaseMVVM<BaseViewModel, LayoutPreviewBinding>, View.OnClickListener {
 
     protected FrameLayout pickerBottom;         //底部布局
     protected ConstraintLayout rlHead;          //头部布局
@@ -59,18 +59,14 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseAc
     private int currentState = PickerConfig.STATE_SHOW_MENU;
 
     @Override
-    public boolean isShowHeadView() {
-        return false;
-    }
-
-    @Override
-    public LayoutPreviewBinding getView() {
-        return LayoutPreviewBinding.inflate(LayoutInflater.from(this));
+    public int setContentLayout() {
+        return R.layout.layout_preview;
     }
 
     @StatusBar(statusStrColor = "black", navStrColor = "black")
     @Override
-    public void initData(Activity activity, Bundle savedInstanceState) {
+    public void initData(BaseViewModel baseViewModel, LayoutPreviewBinding layoutPreviewBinding, Bundle savedInstanceState) {
+
         rlHead = findViewById(R.id.rlHead);
         rlHead.setBackgroundColor(getResources().getColor(R.color.imgPreviewHeadBg));
 
@@ -165,7 +161,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseAc
             JumpUtils.jumpResult(PicturePreviewActivity.this, bundle);
         } else if (i == R.id.original_checkbox) {
             if (original_checkbox.isChecked() && selectedImages.size() >= max) {
-                T.showLong(ResUtils.getReplaceStr(R.string.select_limit, max));
+                T.show(ResUtils.getReplaceStr(R.string.select_limit, max), Toast.LENGTH_LONG);
                 original_checkbox.setChecked(false);
             } else {
                 ImageItem imgItem = imgFolder.images.get(mCurrentPosition);
@@ -212,7 +208,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseAc
 
                     initPage();
                 } else {
-                    T.showLong("该文件夹没有图片");
+                    T.show("该文件夹没有图片", Toast.LENGTH_LONG);
                 }
             }
         });

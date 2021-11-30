@@ -2,18 +2,17 @@ package com.fy.img.picker.multiselect;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -21,7 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fy.baselibrary.aop.annotation.NeedPermission;
 import com.fy.baselibrary.aop.annotation.StatusBar;
-import com.fy.baselibrary.application.IBaseActivity;
+import com.fy.baselibrary.application.mvvm.BaseViewModel;
+import com.fy.baselibrary.application.mvvm.IBaseMVVM;
 import com.fy.baselibrary.base.ViewHolder;
 import com.fy.baselibrary.base.popupwindow.CommonPopupWindow;
 import com.fy.baselibrary.base.popupwindow.NicePopup;
@@ -48,8 +48,8 @@ import java.util.List;
  * 图片选择（单选、多选）
  * Created by fangs on 2017/6/29.
  */
-public class ImgPickerActivity extends AppCompatActivity implements IBaseActivity, View.OnClickListener {
-    ActImgPickerBinding viewBinding;
+public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<BaseViewModel, ActImgPickerBinding>, View.OnClickListener {
+    private ActImgPickerBinding vdb;
 
     protected TextView tvTitle;                 //显示当前图片的位置  例如  5/31
     protected TextView tvBack;
@@ -69,21 +69,16 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseActivit
     private List<ImageFolder> imageFolderArray = new ArrayList<>();
     private int mPosition = 0;//弹窗选中
 
-
     @Override
-    public boolean isShowHeadView() {
-        return false;
-    }
-
-    @Override
-    public ActImgPickerBinding getView() {
-        viewBinding = ActImgPickerBinding.inflate(LayoutInflater.from(this));
-        return viewBinding;
+    public int setContentLayout() {
+        return R.layout.act_img_picker;
     }
 
     @StatusBar(statusStrColor = "statusBar", navStrColor = "statusBar")
     @Override
-    public void initData(Activity activity, Bundle savedInstanceState) {
+    public void initData(BaseViewModel baseViewModel, ActImgPickerBinding actImgPickerBinding, Bundle savedInstanceState) {
+        vdb = actImgPickerBinding;
+
         Bundle bundle = getIntent().getExtras();
         isTAKE_picture = bundle.getBoolean(PickerConfig.KEY_ISTAKE_picture, false);
         maxCount = bundle.getInt(PickerConfig.KEY_MAX_COUNT, -1);
@@ -229,7 +224,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseActivit
                                     imgFolder = (ImageFolder) view.getTag();
 
                                     if (null != imgFolder) {
-                                        T.showLong(imgFolder.name);
+                                        T.show(imgFolder.name, Toast.LENGTH_LONG);
 
                                         mImgListAdapter.refreshData(imgFolder.images);
                                         btn_dir.setText(imgFolder.name);
