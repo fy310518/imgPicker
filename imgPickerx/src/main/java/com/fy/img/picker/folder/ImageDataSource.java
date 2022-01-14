@@ -90,19 +90,21 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         CursorLoader cursorLoader = null;
-//        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
         if (TextUtils.isEmpty(path)) {
             //扫描所有图片
+            // url  MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
-                    null, null,
+                    MediaStore.Files.FileColumns.MIME_TYPE + "= ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + "= ?",
+                    new String[]{"video/mp4", "image/jpeg"},
                     IMAGE_PROJECTION[6] + " DESC");
         }
 
         else { //扫描某个文件夹
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
-                    IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%'",
-                    null,
+                    IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%'" +
+                            MediaStore.Files.FileColumns.MIME_TYPE + "= ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + "= ?",
+                    new String[]{"video/mp4", "image/jpeg"},
                     IMAGE_PROJECTION[6] + " DESC");
         }
         return cursorLoader;
