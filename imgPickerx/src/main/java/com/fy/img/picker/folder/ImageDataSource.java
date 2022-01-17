@@ -127,8 +127,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
                 long duration = data.getLong(data.getColumnIndexOrThrow(IMAGE_PROJECTION[7]));
 
                 //文件不存在 结束本次循环
-                if (!FileUtils.fileIsExist(imagePath) || imageSize <= 0 || TextUtils.isEmpty(imageMimeType)
-                     || (!imageMimeType.equals("image/jpeg") && !imageMimeType.equals("video/mp4")) ){
+                if (!FileUtils.fileIsExist(imagePath) || imageWidth == 0 || imageSize <= 0){
                     continue;
                 }
                 //封装实体
