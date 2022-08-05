@@ -17,6 +17,8 @@ public class PickerConfig {
     public static final String KEY_MAX_COUNT = "max_count";
     /** 是否显示拍照按钮 key */
     public static final String KEY_ISTAKE_picture = "take_a_picture";
+    /** 是否可以预览大图 key */
+    public static final String KEY_ISTAKE_canPreview = "canPreview";
 
     /** 已经选择的图片 */
     public static final String KEY_ALREADY_SELECT = "Already_SELECT";

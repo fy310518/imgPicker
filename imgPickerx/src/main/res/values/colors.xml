@@ -8,6 +8,8 @@
 
     <!-- 状态栏颜色 -->
     <color name="statusBar">#3d8bff</color>
+    <!-- 导航栏颜色 -->
+    <color name="navBar">#0c1a26</color>
     <!-- 标题栏颜色 -->
     <color name="appHeadBg">#3d8bff</color>
     <!-- 界面背景色 -->

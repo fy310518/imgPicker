@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/btn_complete"
             android:layout_alignParentBottom="true"
-            android:background="#DC22292C" />
+            android:background="@color/navBar" />
 
         <Button
             android:id="@+id/btn_dir"

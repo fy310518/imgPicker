@@ -14,7 +14,7 @@ buildscript {
                 material         : "1.2.1",
                 constraintLayout : "2.0.1",
                 work_version     : "2.5.0",
-                fyLibraryx       : "0.3.7"
+                fyLibraryx       : "0.5.0"
         ]
     }
     repositories {

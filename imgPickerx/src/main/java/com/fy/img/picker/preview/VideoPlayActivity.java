@@ -1,6 +1,5 @@
 package com.fy.img.picker.preview;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.MediaController;
 

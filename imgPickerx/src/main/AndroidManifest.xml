@@ -11,10 +11,10 @@
             android:name=".multiselect.ImgPickerActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="${applicationId}.picker.ImgPickerActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="${applicationId}.picker.ImgPickerActivity" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <!-- 图片预览 -->
@@ -22,10 +22,10 @@
             android:name=".preview.PicturePreviewActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="${applicationId}.preview.PicturePreviewActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="${applicationId}.preview.PicturePreviewActivity" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
         </activity>
 
         <activity

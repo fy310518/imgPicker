@@ -58,6 +58,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
     private ImageDataSource imageDataSource;
     private int maxCount = 9;//最大选择数目
     private boolean isTAKE_picture;//是否显示拍照 按钮
+    private boolean canPreview;//是否可以预览大图
     private Button btn_dir;//全部图片
     private Button btn_complete;//完成
 
@@ -74,13 +75,14 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
         return R.layout.act_img_picker;
     }
 
-    @StatusBar(statusStrColor = "statusBar", navStrColor = "statusBar")
+    @StatusBar(statusStrColor = "statusBar", navStrColor = "navBar")
     @Override
     public void initData(BaseViewModel baseViewModel, ActImgPickerBinding actImgPickerBinding, Bundle savedInstanceState) {
         vdb = actImgPickerBinding;
 
         Bundle bundle = getIntent().getExtras();
         isTAKE_picture = bundle.getBoolean(PickerConfig.KEY_ISTAKE_picture, false);
+        canPreview = bundle.getBoolean(PickerConfig.KEY_ISTAKE_canPreview, false);
         maxCount = bundle.getInt(PickerConfig.KEY_MAX_COUNT, -1);
         ImageFolder imageFolder = (ImageFolder) bundle.getSerializable(PickerConfig.KEY_ALREADY_SELECT);
 
@@ -130,7 +132,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
                 .setImageFolder(imageFolder)
                 .setClickListener(num -> setViewStutas(num))
                 .setOnImageItemClickListener((imageItem, position) -> {
-                    if (isTAKE_picture && mPosition == 0) {//是否显示拍照 按钮
+                    if (isTAKE_picture && mPosition == 0) { //是否显示拍照 按钮
                         List<ImageItem> images = new ArrayList<>();
                         images.addAll(imgFolder.images);
                         images.remove(0);
@@ -298,6 +300,8 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
      */
     @SuppressLint("RestrictedApi")
     private void previewPicture(int position, int maxCount, ImageFolder imgFolder) {
+        if (!canPreview) return;
+
         Bundle bundle = new Bundle();
         bundle.putInt(PickerConfig.KEY_MAX_COUNT, maxCount);
         bundle.putInt(PickerConfig.KEY_CURRENT_POSITION, position);
