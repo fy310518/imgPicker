@@ -33,10 +33,10 @@
             android:launchMode="singleTop"
             android:label="@string/videoPlay"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="${applicationId}.preview.VideoViewTestActivity" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="${applicationId}.preview.VideoViewTestActivity" />-->
+<!--                <category android:name="android.intent.category.DEFAULT" />-->
+<!--            </intent-filter>-->
         </activity>
 
     </application>
