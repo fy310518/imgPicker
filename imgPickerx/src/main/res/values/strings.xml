@@ -14,7 +14,11 @@
     <string name="origin">原图</string>
     <string name="origin_size">原图(%1$s)</string>
 
+    <string name="allPhoto">全部图片</string>
     <string name="addFile">添加照片</string>
+    <string name="cameraPhoto">拍摄照片</string>
     <string name="videoPlay">播放视频</string>
+
+    <string name="folderNoImage">该文件夹没有图片</string>
 
 </resources>

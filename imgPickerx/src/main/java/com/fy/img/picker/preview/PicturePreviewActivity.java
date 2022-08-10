@@ -208,7 +208,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
 
                     initPage();
                 } else {
-                    T.show("该文件夹没有图片", Toast.LENGTH_LONG);
+                    T.show(R.string.folderNoImage);
                 }
             }
         });
