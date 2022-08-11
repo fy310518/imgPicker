@@ -56,7 +56,7 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
 
             @Override
             public int getItemViewType(int position, ImageItem imageItem) {
-                return imageItem.isShowCamera();
+                return imageItem.getIsShowCamera();
             }
         });
 
@@ -66,7 +66,7 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
     @SuppressLint("StringFormatMatches")
     @Override
     public void convert(ViewHolder holder, ImageItem imgItem, int position) {
-        if (position == 0 && imgItem.isShowCamera() == 0){//判断 是否显示 拍照按钮
+        if (position == 0 && imgItem.getIsShowCamera() == 0){//判断 是否显示 拍照按钮
 
             FrameLayout camera = holder.getView(R.id.camera);
             camera.setLayoutParams(new FrameLayout.LayoutParams(mImageSize, mImageSize)); //让图片是个正方形

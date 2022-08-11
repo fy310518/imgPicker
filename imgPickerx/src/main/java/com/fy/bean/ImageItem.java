@@ -1,23 +1,17 @@
 package com.fy.bean;
 
-import androidx.annotation.NonNull;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * 图片信息
  * Created by fangs on 2017/6/29.
  */
-public class ImageItem implements Serializable, Comparable<ImageItem> {
+public class ImageItem implements Serializable {
 
-    public ImageItem(String path) {
-        this.path = path;
-    }
-
-    public String name;//图片的名字
 
     @Expose
     @SerializedName(value = "path", alternate = {"suspectImg", "url"})
@@ -25,6 +19,7 @@ public class ImageItem implements Serializable, Comparable<ImageItem> {
 
     private String md5 = "";
 
+    public String name;                //图片的名字
     public String width = "0";         //图片的宽度
     public String height = "0";        //图片的高度
     public long size = 0;     //图片的大小
@@ -32,57 +27,9 @@ public class ImageItem implements Serializable, Comparable<ImageItem> {
     public long addTime;      //图片的创建时间
     public long duration;     //音视频的时长
 
+    public int isShowCamera = 1;   //是否显示拍照按钮 1：表示不显示；0：显示
     public boolean isSelect;  //是否选中
 
-    private String suspectId;
-
-    private int suspectType;
-    private String  suspectName;
-
-    public int bijiao;
-
-
-    public String getSuspectName() {
-        return suspectName == null ? "" : suspectName;
-    }
-
-    public void setSuspectName(String suspectName) {
-        this.suspectName = suspectName;
-    }
-
-    public String getSuspectId() {
-        return suspectId == null ? "" : suspectId;
-    }
-
-    public int getSuspectType() {
-        return suspectType;
-    }
-
-    public void setSuspectType(int suspectType) {
-        this.suspectType = suspectType;
-    }
-
-    public int getIsShowCamera() {
-        return isShowCamera;
-    }
-
-    public int getBijiao() {
-        return bijiao;
-    }
-
-    public void setBijiao(int bijiao) {
-        this.bijiao = bijiao;
-    }
-
-    public String getSuspectUid() {
-        return suspectId == null ? "" : suspectId;
-    }
-
-    public void setSuspectId(String suspectId) {
-        this.suspectId = suspectId;
-    }
-
-    public int isShowCamera = 1;   //是否显示拍照按钮 1：表示不显示；0：显示
 
     public ImageItem() {
     }
@@ -91,17 +38,14 @@ public class ImageItem implements Serializable, Comparable<ImageItem> {
         this.isShowCamera = isShowCamera;
     }
 
+    public ImageItem(String path) {
+        this.path = path;
+    }
+
+
     public ImageItem(String path, boolean isSelect) {
         this.path = path;
         this.isSelect = isSelect;
-    }
-
-    public String getName() {
-        return name == null ? "" : name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getPath() {
@@ -118,6 +62,14 @@ public class ImageItem implements Serializable, Comparable<ImageItem> {
 
     public void setMd5(String md5) {
         this.md5 = md5;
+    }
+
+    public String getName() {
+        return name == null ? "" : name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getWidth() {
@@ -160,6 +112,22 @@ public class ImageItem implements Serializable, Comparable<ImageItem> {
         this.addTime = addTime;
     }
 
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
+    }
+
+    public int getIsShowCamera() {
+        return isShowCamera;
+    }
+
+    public void setIsShowCamera(int isShowCamera) {
+        this.isShowCamera = isShowCamera;
+    }
+
     public boolean isSelect() {
         return isSelect;
     }
@@ -168,29 +136,19 @@ public class ImageItem implements Serializable, Comparable<ImageItem> {
         isSelect = select;
     }
 
-    public int isShowCamera() {
-        return isShowCamera;
-    }
-
-    public void setIsShowCamera(int isShowCamera) {
-        this.isShowCamera = isShowCamera;
-    }
-
     /**
-     * 图片的路径和创建时间相同就认为是同一张图片
+     * 图片的路径认为是同一张图片
      */
     @Override
     public boolean equals(Object o) {
-        if (o instanceof ImageItem) {
-            ImageItem item = (ImageItem) o;
-            return this.path.equalsIgnoreCase(item.path) && this.addTime == item.addTime;
-        }
-
-        return super.equals(o);
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ImageItem imageItem = (ImageItem) o;
+        return Objects.equals(path, imageItem.path);
     }
 
     @Override
-    public int compareTo(@NonNull ImageItem o) {
-        return o.getBijiao() - this.bijiao;
+    public int hashCode() {
+        return Objects.hash(path);
     }
 }
