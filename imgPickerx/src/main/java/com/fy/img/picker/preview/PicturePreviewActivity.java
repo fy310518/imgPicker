@@ -52,6 +52,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
     protected List<ImageItem> selectedImages;   //所有已经选中的图片
     protected int mCurrentPosition = 0;         //跳转进PicturePreviewActivity时的序号，第几个图片; 当前显示的图片下标
     protected int max = 9;                     //最大选择图片数目
+    private int selectionArgsType; //查询类型：图片，video，img 和 video
 
     /**
      * 当前屏幕状态 全屏or显示菜单
@@ -93,6 +94,8 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
         Bundle bundle = getIntent().getExtras();
         mCurrentPosition = bundle.getInt(PickerConfig.KEY_CURRENT_POSITION, 0);
         max = bundle.getInt(PickerConfig.KEY_MAX_COUNT, -1);
+        selectionArgsType = bundle.getInt(PickerConfig.selectionArgsType, 0);
+
         ImageFolder folder = (ImageFolder) bundle.getSerializable(PickerConfig.KEY_ALREADY_SELECT);
         if (null != folder) selectedImages = folder.images;
 
@@ -161,7 +164,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
             JumpUtils.jumpResult(PicturePreviewActivity.this, bundle);
         } else if (i == R.id.original_checkbox) {
             if (original_checkbox.isChecked() && selectedImages.size() >= max) {
-                T.show(ResUtils.getReplaceStr(R.string.select_limit, max), Toast.LENGTH_LONG);
+                T.show(ResUtils.getReplaceStr(R.string.select_limit, max), -1);
                 original_checkbox.setChecked(false);
             } else {
                 ImageItem imgItem = imgFolder.images.get(mCurrentPosition);
@@ -195,7 +198,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
 
     //初始化图片文件夹 相关
     private void initImgFolder(String imgFolderPath, ImageFolder folder) {
-        new ImageDataSource(this, false, imgFolderPath, folder, new ImageDataSource.OnImagesLoadedListener() {
+        new ImageDataSource(this, false, selectionArgsType, imgFolderPath, folder, new ImageDataSource.OnImagesLoadedListener() {
             @Override
             public void onImagesLoaded(List<ImageFolder> imageFolders, boolean isInitLoad) {
                 if (imageFolders.size() > 0 ){
@@ -208,7 +211,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
 
                     initPage();
                 } else {
-                    T.show(R.string.folderNoImage);
+                    T.show(R.string.folderNoImage, -1);
                 }
             }
         });

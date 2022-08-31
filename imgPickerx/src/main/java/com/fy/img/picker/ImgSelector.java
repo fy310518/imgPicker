@@ -24,6 +24,7 @@ public class ImgSelector {
         private boolean canPreview = true;  // 否可以预览图片，默认为true
 
         private int maxSelectCount;         // 图片的最大选择数量，小于等于0时，不限数量。
+        private int selectionArgsType;      //查询类型：图片，video，img 和 video
 
         private ImageFolder imgFolder;      // 已经选择的图片 or 预览图片
 
@@ -50,6 +51,11 @@ public class ImgSelector {
             return this;
         }
 
+        public Builder setSelectionArgsType(@IntRange(from = 0, to = 2) int selectionArgsType) {
+            this.selectionArgsType = selectionArgsType;
+            return this;
+        }
+
         public Builder setImgFolder(@NonNull ImageFolder imgFolder) {
             this.imgFolder = imgFolder;
             return this;
@@ -66,6 +72,7 @@ public class ImgSelector {
             bundle.putBoolean(PickerConfig.KEY_ISTAKE_canPreview, canPreview);
 
             bundle.putInt(PickerConfig.KEY_MAX_COUNT, maxSelectCount);
+            bundle.putInt(PickerConfig.selectionArgsType, selectionArgsType);
             if (null != imgFolder){
                 bundle.putSerializable(PickerConfig.KEY_ALREADY_SELECT, imgFolder);
             }
@@ -93,6 +100,7 @@ public class ImgSelector {
             Bundle bundle = new Bundle();
             bundle.putInt(PickerConfig.KEY_MAX_COUNT, -1);
             bundle.putInt(PickerConfig.KEY_CURRENT_POSITION, position);
+            bundle.putInt(PickerConfig.KEY_MAX_COUNT, maxSelectCount);
 
             bundle.putSerializable(PickerConfig.KEY_IMG_FOLDER, imgFolder);
 

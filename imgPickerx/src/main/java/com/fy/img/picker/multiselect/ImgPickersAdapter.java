@@ -99,7 +99,7 @@ public class ImgPickersAdapter extends MultiCommonAdapter<ImageItem, ViewHolder>
 
                 cbCheck.setOnClickListener(v -> {
                     if (cbCheck.isChecked() && selectedImages.size() >= selectLimit) {
-                        T.show(ResUtils.getReplaceStr(R.string.select_limit, selectLimit), Toast.LENGTH_LONG);
+                        T.show(ResUtils.getReplaceStr(R.string.select_limit, selectLimit), -1);
                         cbCheck.setChecked(false);
                     } else {
                         if (cbCheck.isChecked()) {

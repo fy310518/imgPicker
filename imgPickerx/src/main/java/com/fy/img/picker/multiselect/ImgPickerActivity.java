@@ -56,6 +56,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
     protected TextView tvMenu;
 
     private ImageDataSource imageDataSource;
+    private int selectionArgsType; //查询类型：图片，video，img 和 video
     private int maxCount = 9;//最大选择数目
     private boolean isTAKE_picture;//是否显示拍照 按钮
     private boolean canPreview;//是否可以预览大图
@@ -84,6 +85,8 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
         isTAKE_picture = bundle.getBoolean(PickerConfig.KEY_ISTAKE_picture, false);
         canPreview = bundle.getBoolean(PickerConfig.KEY_ISTAKE_canPreview, false);
         maxCount = bundle.getInt(PickerConfig.KEY_MAX_COUNT, -1);
+        selectionArgsType = bundle.getInt(PickerConfig.selectionArgsType, 0);
+
         ImageFolder imageFolder = (ImageFolder) bundle.getSerializable(PickerConfig.KEY_ALREADY_SELECT);
 
         if (null == imageFolder) imageFolder = new ImageFolder(new ArrayList<>());
@@ -148,7 +151,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
 
     //初始化图片文件夹 相关
     private void initImgFolder(ImageFolder imageFolder, boolean updateId) {
-        imageDataSource = new ImageDataSource(this, updateId, null, imageFolder, new ImageDataSource.OnImagesLoadedListener() {
+        imageDataSource = new ImageDataSource(this, updateId, selectionArgsType,null, imageFolder, new ImageDataSource.OnImagesLoadedListener() {
             @Override
             public void onImagesLoaded(List<ImageFolder> imageFolders, boolean isInitLoad) {
                 if (imageFolders.size() == 0 && isInitLoad) {
@@ -226,7 +229,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
                                     imgFolder = (ImageFolder) view.getTag();
 
                                     if (null != imgFolder) {
-                                        T.show(imgFolder.name, Toast.LENGTH_LONG);
+                                        T.show(imgFolder.name, -1);
 
                                         mImgListAdapter.refreshData(imgFolder.images);
                                         btn_dir.setText(imgFolder.name);

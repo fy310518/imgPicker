@@ -26,8 +26,11 @@ import java.util.List;
  * Created by fangs on 2017/6/30.
  */
 public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
+
+
     private int id = 0;
     private String path;
+    private int selectionArgsType; // 查询类型：图片，video，img 和 video
 
     private boolean isInitLoad;
 
@@ -52,12 +55,13 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
      * @param path           指定扫描的文件夹目录，可以为 null，表示扫描所有图片
      * @param loadedListener 图片加载完成的监听
      */
-    public ImageDataSource(AppCompatActivity activity, boolean updateId, String path, ImageFolder imageFolder,
+    public ImageDataSource(AppCompatActivity activity, boolean updateId, int selectionArgsType, String path, ImageFolder imageFolder,
                            OnImagesLoadedListener loadedListener) {
         this.activity = activity;
         this.imageFolder = imageFolder;
         this.loadedListener = loadedListener;
         this.path = path;
+        this.selectionArgsType = selectionArgsType;
         if (updateId) id++;
 
         LoaderManager loaderManager = LoaderManager.getInstance(activity);
@@ -96,7 +100,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             // url  MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     MediaStore.Files.FileColumns.MIME_TYPE + "= ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + "= ?",
-                    new String[]{"video/mp4", "image/jpeg"},
+                    getSelect(selectionArgsType),
                     IMAGE_PROJECTION[6] + " DESC");
         }
 
@@ -104,7 +108,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%'" +
                             MediaStore.Files.FileColumns.MIME_TYPE + "= ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + "= ?",
-                    new String[]{"video/mp4", "image/jpeg"},
+                    getSelect(selectionArgsType),
                     IMAGE_PROJECTION[6] + " DESC");
         }
         return cursorLoader;
@@ -190,5 +194,23 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
     /** 所有图片加载完成的回调接口 */
     public interface OnImagesLoadedListener {
         void onImagesLoaded(List<ImageFolder> imageFolders, boolean isInitLoad);
+    }
+
+
+
+    // 获取 查询多媒体数据类型 数组
+    private String[] getSelect(int type){
+        String[] selectionArgs = null;
+
+        if (type == 1){
+            selectionArgs = new String[]{"video/mp4"};
+        } else if (type == 2){
+            selectionArgs = new String[]{"video/mp4", "image/jpeg"};
+        } else {
+            selectionArgs = new String[]{"image/jpeg"};
+        }
+
+
+        return selectionArgs;
     }
 }
