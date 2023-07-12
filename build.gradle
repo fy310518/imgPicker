@@ -4,11 +4,11 @@
 buildscript {
     ext {
         var = [
-                compileSdkVersion: 30,
+                compileSdkVersion: 33,
                 buildToolsVersion: "30.0.3",
 
                 minSdkVersion    : 19,
-                targetSdkVersion : 30,
+                targetSdkVersion : 33,
 
                 kotlin_version   : "1.3.72",
                 androidx         : "1.2.0",
