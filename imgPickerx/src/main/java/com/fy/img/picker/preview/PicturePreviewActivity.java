@@ -115,7 +115,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
     private void initPage(){
         //初始化当前页面的状态
         tvTitle.setText(ResUtils.getReplaceStr(R.string.preview_image_count, mCurrentPosition + 1, imgFolder.images.size()));
-        tvTitle.setTextColor(ResUtils.getColor(R.color.white));
+        tvTitle.setTextColor(ResUtils.getColor(com.fy.baselibrary.R.color.white));
         original_checkbox.setChecked(imgFolder.images.get(mCurrentPosition).isSelect);
         tvMenu.setVisibility(View.INVISIBLE);
 

@@ -244,7 +244,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
                         }
                     }).create()
                     .setWidthAndHeight(ViewGroup.LayoutParams.MATCH_PARENT, pw_lv_height)
-                    .setAnim(R.style.AnimDown)
+                    .setAnim(com.fy.baselibrary.R.style.AnimDown)
                     .onCreateView(ImgPickerActivity.this);
 
             //得到button的左上角坐标

@@ -1,3 +1,39 @@
-include ':imgPickerx'
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
+}
+//buildscript {
+//    ext {
+//        var = [
+//                compileSdkVersion: 33,
+//                buildToolsVersion: "33.0.1",
+//
+//                minSdkVersion    : 21,
+//                targetSdkVersion : 33,
+//
+//                androidx         : "1.2.0",
+//                recycleView      : "1.2.0",
+//                material         : "1.2.1",
+//                constraintLayout : "2.0.1",
+//                lifecycle        : "2.2.0",
+//                work_version     : "2.5.0"
+//        ]
+//    }
+//
+//}
 
 rootProject.name = "imgPicker"
+include ':app'
+include ':imgPickerx'
