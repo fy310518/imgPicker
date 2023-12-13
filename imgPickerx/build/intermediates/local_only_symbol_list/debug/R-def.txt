@@ -23,6 +23,7 @@ drawable selector
 drawable selector_grid_camera_bg
 drawable selector_item_checked
 id bannerViewPager
+id bottomLayout
 id btn_complete
 id btn_dir
 id camera

@@ -16,8 +16,9 @@ public class ActImgPickerBindingImpl extends ActImgPickerBinding  {
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.head, 1);
         sViewsWithIds.put(R.id.recycler, 2);
-        sViewsWithIds.put(R.id.btn_dir, 3);
-        sViewsWithIds.put(R.id.btn_complete, 4);
+        sViewsWithIds.put(R.id.bottomLayout, 3);
+        sViewsWithIds.put(R.id.btn_dir, 4);
+        sViewsWithIds.put(R.id.btn_complete, 5);
     }
     // views
     @NonNull
@@ -28,12 +29,13 @@ public class ActImgPickerBindingImpl extends ActImgPickerBinding  {
     // Inverse Binding Event Handlers
 
     public ActImgPickerBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 6, sIncludes, sViewsWithIds));
     }
     private ActImgPickerBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
+            , (android.widget.RelativeLayout) bindings[3]
+            , (androidx.appcompat.widget.AppCompatButton) bindings[5]
             , (androidx.appcompat.widget.AppCompatButton) bindings[4]
-            , (androidx.appcompat.widget.AppCompatButton) bindings[3]
             , (android.view.View) bindings[1]
             , (androidx.recyclerview.widget.RecyclerView) bindings[2]
             );

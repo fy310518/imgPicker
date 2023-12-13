@@ -13,6 +13,7 @@ public class PickerConfig {
     public static final String KEY_SELECTED = "picture_selected";
     /** 首先显示的图片 下标 */
     public static final String KEY_CURRENT_POSITION = "current_position";
+    public static final String KEY_CURRENT_btnEnable = "current_btnEnable";
     /** 最多选择图片数目 key */
     public static final String KEY_MAX_COUNT = "max_count";
     /** 查询类型：图片，video，img 和 video key */

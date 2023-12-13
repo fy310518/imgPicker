@@ -60,6 +60,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
     private int maxCount = 9;//最大选择数目
     private boolean isTAKE_picture;//是否显示拍照 按钮
     private boolean canPreview;//是否可以预览大图
+    private int btnEnable = Color.WHITE; // 预览，完成 按钮 可点击 颜色值
     private Button btn_dir;//全部图片
     private Button btn_complete;//完成
 
@@ -85,6 +86,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
         isTAKE_picture = bundle.getBoolean(PickerConfig.KEY_ISTAKE_picture, false);
         canPreview = bundle.getBoolean(PickerConfig.KEY_ISTAKE_canPreview, false);
         maxCount = bundle.getInt(PickerConfig.KEY_MAX_COUNT, -1);
+        btnEnable = bundle.getInt(PickerConfig.KEY_CURRENT_btnEnable, Color.WHITE);
         selectionArgsType = bundle.getInt(PickerConfig.selectionArgsType, 0);
 
         ImageFolder imageFolder = (ImageFolder) bundle.getSerializable(PickerConfig.KEY_ALREADY_SELECT);
@@ -282,9 +284,9 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
      */
     public void setViewStutas(int num) {
         if (num > 0) {
-            btn_complete.setTextColor(Color.WHITE);
+            btn_complete.setTextColor(btnEnable);
             tvMenu.setEnabled(true);
-            tvMenu.setTextColor(Color.WHITE);
+            tvMenu.setTextColor(btnEnable);
             tvMenu.setText(ResUtils.getReplaceStr(R.string.preview_count, num));
         } else {
             btn_complete.setTextColor(Color.GRAY);

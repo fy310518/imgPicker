@@ -1,6 +1,7 @@
 package com.fy.img.picker;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.IntRange;
@@ -29,6 +30,8 @@ public class ImgSelector {
         private ImageFolder imgFolder;      // 已经选择的图片 or 预览图片
 
         private int position;               // 预览图片，首先显示的图片 下标
+
+        private int btnEnable = Color.WHITE;// 预览，完成 按钮 可点击 颜色值
 
 
         public Builder setUseCamera(boolean useCamera) {
@@ -66,11 +69,17 @@ public class ImgSelector {
             return this;
         }
 
+        public Builder setBtnEnable(int btnEnable) {
+            this.btnEnable = btnEnable;
+            return this;
+        }
+
         private Bundle getBundle(){
             Bundle bundle = new Bundle();
             bundle.putBoolean(PickerConfig.KEY_ISTAKE_picture, useCamera);
             bundle.putBoolean(PickerConfig.KEY_ISTAKE_canPreview, canPreview);
 
+            bundle.putInt(PickerConfig.KEY_CURRENT_btnEnable, btnEnable);
             bundle.putInt(PickerConfig.KEY_MAX_COUNT, maxSelectCount);
             bundle.putInt(PickerConfig.selectionArgsType, selectionArgsType);
             if (null != imgFolder){
@@ -100,6 +109,7 @@ public class ImgSelector {
             Bundle bundle = new Bundle();
             bundle.putInt(PickerConfig.KEY_MAX_COUNT, -1);
             bundle.putInt(PickerConfig.KEY_CURRENT_POSITION, position);
+            bundle.putInt(PickerConfig.KEY_CURRENT_btnEnable, btnEnable);
             bundle.putInt(PickerConfig.KEY_MAX_COUNT, maxSelectCount);
 
             bundle.putSerializable(PickerConfig.KEY_IMG_FOLDER, imgFolder);

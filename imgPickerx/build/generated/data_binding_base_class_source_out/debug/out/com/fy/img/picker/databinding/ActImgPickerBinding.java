@@ -4,6 +4,7 @@ package com.fy.img.picker.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatButton;
@@ -15,6 +16,9 @@ import java.lang.Deprecated;
 import java.lang.Object;
 
 public abstract class ActImgPickerBinding extends ViewDataBinding {
+  @NonNull
+  public final RelativeLayout bottomLayout;
+
   @NonNull
   public final AppCompatButton btnComplete;
 
@@ -28,8 +32,10 @@ public abstract class ActImgPickerBinding extends ViewDataBinding {
   public final RecyclerView recycler;
 
   protected ActImgPickerBinding(Object _bindingComponent, View _root, int _localFieldCount,
-      AppCompatButton btnComplete, AppCompatButton btnDir, View head, RecyclerView recycler) {
+      RelativeLayout bottomLayout, AppCompatButton btnComplete, AppCompatButton btnDir, View head,
+      RecyclerView recycler) {
     super(_bindingComponent, _root, _localFieldCount);
+    this.bottomLayout = bottomLayout;
     this.btnComplete = btnComplete;
     this.btnDir = btnDir;
     this.head = head;

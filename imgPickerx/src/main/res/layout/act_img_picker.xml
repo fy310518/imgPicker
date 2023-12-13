@@ -17,61 +17,61 @@
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:layout_above="@+id/bottomLayout"
             android:layout_below="@+id/head"
-            android:clipToPadding="false"
-            android:layout_above="@+id/btn_dir" />
+            android:background="@color/white"
+            android:clipToPadding="false" />
 
-        <View
+        <RelativeLayout
+            android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/btn_complete"
+            android:layout_height="48dp"
             android:layout_alignParentBottom="true"
-            android:background="@color/navBar" />
+            android:background="@color/navBar">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_dir"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:background="@null"
-            android:drawablePadding="4dp"
-            android:drawableEnd="@mipmap/text_indicator"
-            android:ellipsize="end"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:singleLine="true"
-            android:text="@string/allPhoto"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_dir"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:background="@null"
+                android:drawableEnd="@mipmap/text_indicator"
+                android:drawablePadding="4dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:singleLine="true"
+                android:text="@string/allPhoto"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_complete"
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:gravity="center"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:background="@null"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="@string/complete"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:background="@null"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/complete"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
 
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="12dp"
-            android:layout_marginTop="12dp"
-            android:layout_alignTop="@id/btn_complete"
-            android:layout_toLeftOf="@id/btn_complete"
-            android:background="#cc111111" />
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:layout_toLeftOf="@id/btn_complete"
+                android:background="#cc111111" />
 
+        </RelativeLayout>
 
     </RelativeLayout>
 </layout>
