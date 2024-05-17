@@ -5,9 +5,10 @@ import android.widget.MediaController;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.fy.baselibrary.aop.annotation.StatusBar;
 import com.fy.baselibrary.application.mvvm.BaseViewModel;
 import com.fy.baselibrary.application.mvvm.IBaseMVVM;
+import com.fy.baselibrary.utils.ResUtils;
+import com.fy.baselibrary.utils.config.StatusBarUtils;
 import com.fy.img.picker.R;
 import com.fy.img.picker.databinding.ActVideoPalyBinding;
 
@@ -24,11 +25,11 @@ public class VideoPlayActivity extends AppCompatActivity implements IBaseMVVM<Ba
         return R.layout.act_video_paly;
     }
 
-    @StatusBar(statusOrNavModel = 1, statusStrColor = "black", navStrColor = "black")
     @Override
     public void initData(BaseViewModel baseViewModel, ActVideoPalyBinding actVideoPalyBinding, Bundle savedInstanceState) {
         viewBinding = actVideoPalyBinding;
-        
+        StatusBarUtils.Companion.immersiveStatusBar(this, ResUtils.getColor(R.color.black));
+
         String videoPath = getIntent().getExtras().getString("videoPath", "");
 
         viewBinding.videoView.setVideoPath(videoPath);

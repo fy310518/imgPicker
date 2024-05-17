@@ -29,6 +29,7 @@ import com.fy.baselibrary.rv.divider.GridItemDecoration;
 import com.fy.baselibrary.utils.DensityUtils;
 import com.fy.baselibrary.utils.JumpUtils;
 import com.fy.baselibrary.utils.ResUtils;
+import com.fy.baselibrary.utils.config.StatusBarUtils;
 import com.fy.baselibrary.utils.media.MediaScanner;
 import com.fy.baselibrary.utils.media.UpdateMedia;
 import com.fy.baselibrary.utils.notify.T;
@@ -77,10 +78,10 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
         return R.layout.act_img_picker;
     }
 
-    @StatusBar(statusStrColor = "statusBar", navStrColor = "navBar")
     @Override
     public void initData(BaseViewModel baseViewModel, ActImgPickerBinding actImgPickerBinding, Bundle savedInstanceState) {
         vdb = actImgPickerBinding;
+        StatusBarUtils.Companion.setStatusBarColor(this, ResUtils.getColor(R.color.statusBar), ResUtils.getColor(R.color.navBar));
 
         Bundle bundle = getIntent().getExtras();
         isTAKE_picture = bundle.getBoolean(PickerConfig.KEY_ISTAKE_picture, false);

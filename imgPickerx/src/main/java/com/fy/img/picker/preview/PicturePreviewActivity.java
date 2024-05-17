@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -17,11 +16,11 @@ import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.bigkoo.convenientbanner.listener.OnPageChangeListener;
-import com.fy.baselibrary.aop.annotation.StatusBar;
 import com.fy.baselibrary.application.mvvm.BaseViewModel;
 import com.fy.baselibrary.application.mvvm.IBaseMVVM;
 import com.fy.baselibrary.utils.JumpUtils;
 import com.fy.baselibrary.utils.ResUtils;
+import com.fy.baselibrary.utils.config.StatusBarUtils;
 import com.fy.baselibrary.utils.notify.T;
 import com.fy.bean.ImageFolder;
 import com.fy.bean.ImageItem;
@@ -64,9 +63,9 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
         return R.layout.layout_preview;
     }
 
-    @StatusBar(statusStrColor = "black", navStrColor = "black")
     @Override
     public void initData(BaseViewModel baseViewModel, LayoutPreviewBinding layoutPreviewBinding, Bundle savedInstanceState) {
+        StatusBarUtils.Companion.setStatusBarColor(this, ResUtils.getColor(R.color.black), ResUtils.getColor(R.color.black));
 
         rlHead = findViewById(R.id.rlHead);
         rlHead.setBackgroundColor(getResources().getColor(R.color.imgPreviewHeadBg));
