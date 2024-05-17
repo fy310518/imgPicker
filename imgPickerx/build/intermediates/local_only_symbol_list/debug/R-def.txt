@@ -6,8 +6,9 @@ attr? cropFocusHeight
 attr? cropFocusWidth
 attr? cropMaskColor
 attr? cropStyle
-color BgColor
+color appBg
 color appHeadBg
+color black
 color imgPreviewBottomBg
 color imgPreviewHeadBg
 color navBar

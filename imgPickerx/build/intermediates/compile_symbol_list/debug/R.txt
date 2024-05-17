@@ -4,8 +4,9 @@ int attr cropFocusHeight 0x0
 int attr cropFocusWidth 0x0
 int attr cropMaskColor 0x0
 int attr cropStyle 0x0
-int color BgColor 0x0
+int color appBg 0x0
 int color appHeadBg 0x0
+int color black 0x0
 int color imgPreviewBottomBg 0x0
 int color imgPreviewHeadBg 0x0
 int color navBar 0x0
