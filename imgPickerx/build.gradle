@@ -5,11 +5,12 @@ plugins {
 }
 task generateSourcesJar(type: Jar){
     from android.sourceSets.main.java.srcDirs
-    classifier 'sources'
+//    classifier 'sources'
 }
 android {
     compileSdk 33
 
+    namespace 'com.fy.img.picker'
     defaultConfig {
         minSdk 21
         targetSdk 33
