@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 7.1.1" type="conditional_incidents">
+
+    <incident
+        id="LockedOrientationActivity"
+        severity="warning"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices">
+        <fix-attribute
+            description="Set screenOrientation=&quot;fullSensor&quot;"
+            robot="true"
+            independent="true"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="screenOrientation"
+            value="fullSensor"/>
+        <location
+            file="${:imgPickerx*debug*sourceProvider*0*manifest*0}"
+            line="13"
+            column="13"
+            startOffset="399"
+            endLine="13"
+            endColumn="49"
+            endOffset="435"/>
+        <map>
+            <condition library="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LockedOrientationActivity"
+        severity="warning"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices">
+        <fix-attribute
+            description="Set screenOrientation=&quot;fullSensor&quot;"
+            robot="true"
+            independent="true"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="screenOrientation"
+            value="fullSensor"/>
+        <location
+            file="${:imgPickerx*debug*sourceProvider*0*manifest*0}"
+            line="24"
+            column="13"
+            startOffset="868"
+            endLine="24"
+            endColumn="49"
+            endOffset="904"/>
+        <map>
+            <condition library="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="LockedOrientationActivity"
+        severity="warning"
+        message="Expecting `android:screenOrientation=&quot;unspecified&quot;` or `&quot;fullSensor&quot;` for this activity so the user can use the application in any orientation and provide a great experience on Chrome OS devices">
+        <fix-attribute
+            description="Set screenOrientation=&quot;fullSensor&quot;"
+            robot="true"
+            independent="true"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="screenOrientation"
+            value="fullSensor"/>
+        <location
+            file="${:imgPickerx*debug*sourceProvider*0*manifest*0}"
+            line="35"
+            column="13"
+            startOffset="1362"
+            endLine="35"
+            endColumn="49"
+            endOffset="1398"/>
+        <map>
+            <condition library="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_toLeftOf` with `android:layout_toStartOf=&quot;@id/btn_complete&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_toStartOf=&quot;@id/btn_complete&quot;"
+            oldString="layout_toLeftOf"
+            replacement="layout_toStartOf"/>
+        <location
+            file="${:imgPickerx*debug*sourceProvider*0*resDir*0}/layout/act_img_picker.xml"
+            line="71"
+            column="17"
+            startOffset="2800"
+            endLine="71"
+            endColumn="40"
+            endOffset="2823"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_alignParentRight` with `android:layout_alignParentEnd=&quot;true&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_alignParentEnd=&quot;true&quot;"
+            oldString="layout_alignParentRight"
+            replacement="layout_alignParentEnd"/>
+        <location
+            file="${:imgPickerx*debug*sourceProvider*0*resDir*0}/layout/adapter_image.xml"
+            line="17"
+            column="9"
+            startOffset="596"
+            endLine="17"
+            endColumn="40"
+            endOffset="627"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:drawableLeft` with `android:drawableStart=&quot;@mipmap/video_icon&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:drawableStart=&quot;@mipmap/video_icon&quot;"
+            oldString="drawableLeft"
+            replacement="drawableStart"/>
+        <location
+            file="${:imgPickerx*debug*sourceProvider*0*resDir*0}/layout/adapter_image.xml"
+            line="30"
+            column="9"
+            startOffset="1066"
+            endLine="30"
+            endColumn="29"
+            endOffset="1086"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Use &quot;`end`&quot; instead of &quot;`right`&quot; to ensure correct behavior in right-to-left locales">
+        <location
+            file="${:imgPickerx*debug*sourceProvider*0*resDir*0}/layout/adapter_image.xml"
+            line="34"
+            column="26"
+            startOffset="1289"
+            endLine="34"
+            endColumn="47"
+            endOffset="1310"/>
+        <map>
+            <entry
+                name="applies"
+                int="2"/>
+        </map>
+    </incident>
+
+    <incident
+        id="InlinedApi"
+        severity="warning"
+        message="">
+        <fix-data requiresApi="29"/>
+        <location
+            file="${:imgPickerx*debug*sourceProvider*0*javaDir*0}/com/fy/img/picker/folder/ImageDataSource.java"
+            line="45"
+            column="13"
+            startOffset="1552"
+            endLine="45"
+            endColumn="45"
+            endOffset="1584"/>
+        <map>
+            <entry
+                name="minSdk"
+                int="21"/>
+            <entry
+                name="requiresApi"
+                int="29"/>
+            <entry
+                name="message"
+                string="Field requires API level 29 (current min is %1$s): `android.provider.MediaStore.MediaColumns#DURATION`"/>
+        </map>
+    </incident>
+
+</incidents>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="appBg">#f5f5f5</color>
+    <color name="appHeadBg">#3d8bff</color>
+    <color name="black">#000000</color>
+    <color name="imgPreviewBottomBg">#A6000000</color>
+    <color name="imgPreviewHeadBg">#A6000000</color>
+    <color name="navBar">#0c1a26</color>
+    <color name="rce_loading_data">#0099FF</color>
+    <color name="rce_loading_data_bk">#EEDEDEDE</color>
+    <color name="rce_loading_progress_initial">#D4F0F7</color>
+    <color name="rce_loading_progress_terminal">#0099FF</color>
+    <color name="selection">#4dd6d6d6</color>
+    <color name="statusBar">#3d8bff</color>
+    <color name="titleBarCon">#fefefe</color>
+    <color name="txtSuperLight">#b3b3b3</color>
+    <string name="addFile">添加照片</string>
+    <string name="allPhoto">全部图片</string>
+    <string name="all_images">最近相册</string>
+    <string name="app_name">imgPicker</string>
+    <string name="cameraPhoto">拍摄照片</string>
+    <string name="folderNoImage">该文件夹没有图片</string>
+    <string name="folder_image_count">共%1$d张</string>
+    <string name="origin">原图</string>
+    <string name="origin_size">原图(%1$s)</string>
+    <string name="photo_crop">图片裁剪</string>
+    <string name="preview">预览</string>
+    <string name="preview_count">预览(%1$s)</string>
+    <string name="preview_image_count">%1$s/%2$s</string>
+    <string name="select_complete">完成(%1$s/%2$s)</string>
+    <string name="select_img">选择图片和视频</string>
+    <string name="select_limit">最多选择%1$s张图片或视频</string>
+    <string name="videoPlay">播放视频</string>
+    <declare-styleable name="CropImageView">
+        <attr format="color" name="cropMaskColor"/>
+        <attr format="color" name="cropBorderColor"/>
+        <attr format="dimension" name="cropBorderWidth"/>
+        <attr format="dimension" name="cropFocusWidth"/>
+        <attr format="dimension" name="cropFocusHeight"/>
+        <attr format="enum" name="cropStyle">
+            <enum name="rectangle" value="0"/>
+            <enum name="circle" value="1"/>
+        </attr>
+    </declare-styleable>
+</resources>

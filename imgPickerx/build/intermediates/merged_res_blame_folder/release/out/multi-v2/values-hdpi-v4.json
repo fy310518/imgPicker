@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\merged_res\\release\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "D:\\Android\\.gradle\\caches\\transforms-3\\5584a7844f8a421b31bbad969af54a32\\transformed\\appcompat-1.6.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-hdpi-v4\\values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "D:\\Android\\.gradle\\caches\\transforms-3\\5584a7844f8a421b31bbad969af54a32\\transformed\\appcompat-1.6.0\\res\\values-hdpi-v4\\values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}

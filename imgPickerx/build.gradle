@@ -46,7 +46,7 @@ android {
         exclude 'publicsuffixes.gz'
     }
     kotlinOptions {
-        useIR = true
+//        useIR = true
         jvmTarget = '1.8'
         freeCompilerArgs += ["-Xskip-prerelease-check"]
     }
@@ -82,7 +82,7 @@ dependencies {
 
     //PhotoView
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
-    compileOnly 'com.bigkoo:convenientbanner:2.1.5'
+    implementation 'com.bigkoo:convenientbanner:2.1.5'
 
 //    ViewPagerTransforms 切换动画
 //    implementation 'com.ToxicBakery.viewpager.transforms:view-pager-transforms:2.0.24'

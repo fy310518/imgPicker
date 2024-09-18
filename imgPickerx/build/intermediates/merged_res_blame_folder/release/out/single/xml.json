@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\merged_res\\release\\xml\\standalone_badge.xml",
+        "source": "D:\\Android\\.gradle\\caches\\transforms-3\\e8cb05f30719300e9deabddebcd89d39\\transformed\\material-1.2.1\\res\\xml\\standalone_badge.xml"
+    },
+    {
+        "merged": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\merged_res\\release\\xml\\standalone_badge_gravity_top_start.xml",
+        "source": "D:\\Android\\.gradle\\caches\\transforms-3\\e8cb05f30719300e9deabddebcd89d39\\transformed\\material-1.2.1\\res\\xml\\standalone_badge_gravity_top_start.xml"
+    },
+    {
+        "merged": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\merged_res\\release\\xml\\network_security_config.xml",
+        "source": "D:\\Android\\.gradle\\caches\\transforms-3\\65fc7b8bcb1b5405411d3847a0f01af6\\transformed\\fyLibraryx-2.2.6\\res\\xml\\network_security_config.xml"
+    },
+    {
+        "merged": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\merged_res\\release\\xml\\standalone_badge_offset.xml",
+        "source": "D:\\Android\\.gradle\\caches\\transforms-3\\e8cb05f30719300e9deabddebcd89d39\\transformed\\material-1.2.1\\res\\xml\\standalone_badge_offset.xml"
+    },
+    {
+        "merged": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\merged_res\\release\\xml\\provider_paths.xml",
+        "source": "D:\\Android\\.gradle\\caches\\transforms-3\\65fc7b8bcb1b5405411d3847a0f01af6\\transformed\\fyLibraryx-2.2.6\\res\\xml\\provider_paths.xml"
+    },
+    {
+        "merged": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\merged_res\\release\\xml\\standalone_badge_gravity_bottom_start.xml",
+        "source": "D:\\Android\\.gradle\\caches\\transforms-3\\e8cb05f30719300e9deabddebcd89d39\\transformed\\material-1.2.1\\res\\xml\\standalone_badge_gravity_bottom_start.xml"
+    },
+    {
+        "merged": "D:\\Android\\workspaces\\imgPicker\\imgPickerx\\build\\intermediates\\merged_res\\release\\xml\\standalone_badge_gravity_bottom_end.xml",
+        "source": "D:\\Android\\.gradle\\caches\\transforms-3\\e8cb05f30719300e9deabddebcd89d39\\transformed\\material-1.2.1\\res\\xml\\standalone_badge_gravity_bottom_end.xml"
+    }
+]

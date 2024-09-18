@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fy.img.picker.test" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="33" />
+
+    <instrumentation
+        android:name="androidx.test.runner.AndroidJUnitRunner"
+        android:functionalTest="false"
+        android:handleProfiling="false"
+        android:label="Tests for com.fy.img.picker.test"
+        android:targetPackage="com.fy.img.picker.test" />
+
+    <permission
+        android:name="com.fy.img.picker.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.fy.img.picker.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true" >
+        <uses-library android:name="android.test.runner" />
+        <!-- 图片选择器 -->
+        <activity
+            android:name="com.fy.img.picker.multiselect.ImgPickerActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="${applicationId}.picker.ImgPickerActivity" /> -->
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- </intent-filter> -->
+        </activity> <!-- 图片预览 -->
+        <activity
+            android:name="com.fy.img.picker.preview.PicturePreviewActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="${applicationId}.preview.PicturePreviewActivity" /> -->
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name="com.fy.img.picker.preview.VideoPlayActivity"
+            android:label="@string/videoPlay"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" >
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="${applicationId}.preview.VideoViewTestActivity" /> -->
+            <!-- <category android:name="android.intent.category.DEFAULT" /> -->
+            <!-- </intent-filter> -->
+        </activity> <!-- Android 7.0 在应用间共享文件 -->
+        <provider
+            android:name="com.fy.baselibrary.base.BaseFileProvider"
+            android:authorities="com.fy.img.picker.test.provider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+            android:value="GlideModule" />
+
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="com.fy.img.picker.test.androidx-startup"
+            android:exported="false" >
+            <meta-data
+                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+                android:value="androidx.startup" />
+            <meta-data
+                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+                android:value="androidx.startup" />
+        </provider>
+    </application>
+
+</manifest>
