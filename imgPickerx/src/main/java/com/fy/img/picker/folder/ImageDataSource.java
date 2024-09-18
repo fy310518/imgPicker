@@ -99,7 +99,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             //扫描所有图片
             // url  MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
-                    MediaStore.Files.FileColumns.MIME_TYPE + "= ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + "= ?",
+                    MediaStore.Files.FileColumns.MIME_TYPE + " = ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " = ?",
                     getSelect(selectionArgsType),
                     IMAGE_PROJECTION[6] + " DESC");
         }
@@ -107,7 +107,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
         else { //扫描某个文件夹
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%' " +
-                            MediaStore.Files.FileColumns.MIME_TYPE + "= ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + "= ?",
+                            MediaStore.Files.FileColumns.MIME_TYPE + " = ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " = ?",
                     getSelect(selectionArgsType),
                     IMAGE_PROJECTION[6] + " DESC");
         }
