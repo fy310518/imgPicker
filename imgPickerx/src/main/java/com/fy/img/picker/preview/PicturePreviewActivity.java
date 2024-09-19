@@ -206,6 +206,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
                             break;
                         }
                     }
+                    if(null == imgFolder) imgFolder = new ImageFolder();
 
                     initPage();
                 } else {
