@@ -58,10 +58,15 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
     public ImageDataSource(AppCompatActivity activity, boolean updateId, int selectionArgsType, String path, ImageFolder imageFolder,
                            OnImagesLoadedListener loadedListener) {
         this.activity = activity;
-        this.imageFolder = imageFolder;
         this.loadedListener = loadedListener;
         this.path = path;
         this.selectionArgsType = selectionArgsType;
+        if(null == imageFolder){
+            this.imageFolder = new ImageFolder();
+        } else {
+            this.imageFolder = imageFolder;
+        }
+        
         if (updateId) id++;
 
         LoaderManager loaderManager = LoaderManager.getInstance(activity);
