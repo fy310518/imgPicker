@@ -8,14 +8,13 @@ import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bigkoo.convenientbanner.ConvenientBanner;
-import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
-import com.bigkoo.convenientbanner.holder.Holder;
-import com.bigkoo.convenientbanner.listener.OnPageChangeListener;
 import com.fy.baselibrary.application.mvvm.BaseViewModel;
 import com.fy.baselibrary.application.mvvm.IBaseMVVM;
 import com.fy.baselibrary.utils.JumpUtils;
@@ -43,7 +42,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
     protected TextView tvTitle;                 //显示当前图片的位置  例如  5/31
     protected TextView tvBack;
     protected TextView tvMenu;
-    protected ConvenientBanner viewPager;
+    protected RecyclerView viewPager;
     protected CheckBox original_checkbox;
     protected TextView send;
 
@@ -118,38 +117,36 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
         original_checkbox.setChecked(imgFolder.images.get(mCurrentPosition).isSelect);
         tvMenu.setVisibility(View.INVISIBLE);
 
-        //本地图片例子 new LocalImageHolderView(), imgFolder.images
-        viewPager.setPages(new CBViewHolderCreator() {
+        viewPager.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(viewPager);
+
+        LocalImageListAdapter adapter = new LocalImageListAdapter(this, imgFolder.images);
+        viewPager.setAdapter(adapter);
+        viewPager.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public Holder createHolder(View itemView) {
-                return new LocalImageHolderView(itemView, PicturePreviewActivity.this);
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                    try {
+                        View view = snapHelper.findSnapView(viewPager.getLayoutManager());
+                        mCurrentPosition = viewPager.getLayoutManager().getPosition(view);
+
+                        original_checkbox.setChecked(imgFolder.images.get(mCurrentPosition).isSelect);
+                        tvTitle.setText(ResUtils.getReplaceStr(R.string.preview_image_count, mCurrentPosition + 1, imgFolder.images.size()));
+                    } catch (Exception e) {
+                    }
+                }
             }
 
             @Override
-            public int getLayoutId() {
-                return R.layout.viewpager_preview;
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
             }
-        }, imgFolder.images)
-                .setOnPageChangeListener(new OnPageChangeListener() {
-                    @Override
-                    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-
-                    }
-
-                    @Override
-                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-
-                    }
-
-                    @Override
-                    public void onPageSelected(int position) {
-                        mCurrentPosition = position;
-                        original_checkbox.setChecked(imgFolder.images.get(position).isSelect);
-                        tvTitle.setText(ResUtils.getReplaceStr(R.string.preview_image_count, position + 1, imgFolder.images.size()));
-                    }
-                })
-                .setFirstItemPos(mCurrentPosition);
-//                .setPageTransformer(new AccordionTransformer())
+        });
+        viewPager.smoothScrollToPosition(mCurrentPosition);
     }
 
     @SuppressLint("StringFormatMatches")
