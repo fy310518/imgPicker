@@ -112,6 +112,10 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
     }
 
     private void initPage(){
+        if(imgFolder.images.size() == 0){
+            return;
+        }
+        
         //初始化当前页面的状态
         tvTitle.setText(ResUtils.getReplaceStr(R.string.preview_image_count, mCurrentPosition + 1, imgFolder.images.size()));
         tvTitle.setTextColor(ResUtils.getColor(com.fy.baselibrary.R.color.white));
