@@ -106,7 +106,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
 
         else { //扫描某个文件夹
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
-                    IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%' " +
+                    IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%' AND" +
                             MediaStore.Files.FileColumns.MIME_TYPE + " = ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " = ?",
                     getSelect(selectionArgsType),
                     IMAGE_PROJECTION[6] + " DESC");

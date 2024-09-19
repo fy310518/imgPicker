@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fy.baselibrary.application.mvvm.BaseViewModel;
 import com.fy.baselibrary.application.mvvm.IBaseMVVM;
+import com.fy.baselibrary.rv.CmRecyclerView;
 import com.fy.baselibrary.utils.JumpUtils;
 import com.fy.baselibrary.utils.ResUtils;
 import com.fy.baselibrary.utils.config.StatusBarUtils;
@@ -42,7 +43,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
     protected TextView tvTitle;                 //显示当前图片的位置  例如  5/31
     protected TextView tvBack;
     protected TextView tvMenu;
-    protected RecyclerView viewPager;
+    protected CmRecyclerView viewPager;
     protected CheckBox original_checkbox;
     protected TextView send;
 
@@ -117,6 +118,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
         original_checkbox.setChecked(imgFolder.images.get(mCurrentPosition).isSelect);
         tvMenu.setVisibility(View.INVISIBLE);
 
+        viewPager.setFlingMaxVelocity(4000);
         viewPager.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
 
         PagerSnapHelper snapHelper = new PagerSnapHelper();
