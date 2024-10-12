@@ -100,11 +100,18 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         CursorLoader cursorLoader = null;
 
+        String selection = "";
+        if(selectionArgsType == 2){
+            selection = MediaStore.Files.FileColumns.MIME_TYPE + " LIKE '?%' OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " LIKE '?%' ";
+        } else {
+            selection = MediaStore.Files.FileColumns.MIME_TYPE + " LIKE '?%' ";
+        }
+
         if (TextUtils.isEmpty(path)) {
             //扫描所有图片
             // url  MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
-                    MediaStore.Files.FileColumns.MIME_TYPE + " = ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " = ?",
+                    selection,
                     getSelect(selectionArgsType),
                     IMAGE_PROJECTION[6] + " DESC");
         }
@@ -112,7 +119,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
         else { //扫描某个文件夹
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%' AND " +
-                            MediaStore.Files.FileColumns.MIME_TYPE + " = ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " = ?",
+                            selection,
                     getSelect(selectionArgsType),
                     IMAGE_PROJECTION[6] + " DESC");
         }
@@ -208,11 +215,11 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
         String[] selectionArgs = null;
 
         if (type == 1){
-            selectionArgs = new String[]{"video/*"};
+            selectionArgs = new String[]{"video/"};
         } else if (type == 2){
-            selectionArgs = new String[]{"video/*", "image/*"};
+            selectionArgs = new String[]{"video/", "image/"};
         } else {
-            selectionArgs = new String[]{"image/*"};
+            selectionArgs = new String[]{"image/"};
         }
 
 
