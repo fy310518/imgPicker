@@ -103,14 +103,14 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
         if (TextUtils.isEmpty(path)) {
             //扫描所有图片
             // url  MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-            cursorLoader = new CursorLoader(activity, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
+            cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     MediaStore.Files.FileColumns.MIME_TYPE + " = ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " = ?",
                     getSelect(selectionArgsType),
                     IMAGE_PROJECTION[6] + " DESC");
         }
 
         else { //扫描某个文件夹
-            cursorLoader = new CursorLoader(activity, MediaStore.Images.Media.EXTERNAL_CONTENT_URI, IMAGE_PROJECTION,
+            cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%' AND " +
                             MediaStore.Files.FileColumns.MIME_TYPE + " = ? OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " = ?",
                     getSelect(selectionArgsType),
@@ -208,11 +208,11 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
         String[] selectionArgs = null;
 
         if (type == 1){
-            selectionArgs = new String[]{"video/mp4"};
+            selectionArgs = new String[]{"video/*"};
         } else if (type == 2){
-            selectionArgs = new String[]{"video/mp4", "image/jpeg"};
+            selectionArgs = new String[]{"video/*", "image/*"};
         } else {
-            selectionArgs = new String[]{"image/jpeg"};
+            selectionArgs = new String[]{"image/*"};
         }
 
 
