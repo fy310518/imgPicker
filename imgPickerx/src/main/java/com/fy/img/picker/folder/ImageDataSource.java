@@ -102,9 +102,11 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
 
         String selection = "";
         if(selectionArgsType == 2){
-            selection = MediaStore.Files.FileColumns.MIME_TYPE + " LIKE '?%' OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " LIKE '?%' ";
+            selection = MediaStore.Files.FileColumns.MIME_TYPE + " LIKE 'video%' OR " + MediaStore.Files.FileColumns.MIME_TYPE  + " LIKE 'image%' ";
+        } else if(selectionArgsType == 1){
+            selection = MediaStore.Files.FileColumns.MIME_TYPE + " LIKE 'video%' ";
         } else {
-            selection = MediaStore.Files.FileColumns.MIME_TYPE + " LIKE '?%' ";
+            selection = MediaStore.Files.FileColumns.MIME_TYPE + " LIKE 'image%' ";
         }
 
         if (TextUtils.isEmpty(path)) {
@@ -112,7 +114,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             // url  MediaStore.Images.Media.EXTERNAL_CONTENT_URI
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     selection,
-                    getSelect(selectionArgsType),
+                    null,
                     IMAGE_PROJECTION[6] + " DESC");
         }
 
@@ -120,7 +122,7 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
             cursorLoader = new CursorLoader(activity, MediaStore.Files.getContentUri("external"), IMAGE_PROJECTION,
                     IMAGE_PROJECTION[1] + " like '%" + args.getString("path") + "%' AND " +
                             selection,
-                    getSelect(selectionArgsType),
+                    null,
                     IMAGE_PROJECTION[6] + " DESC");
         }
         return cursorLoader;
@@ -208,21 +210,4 @@ public class ImageDataSource implements LoaderManager.LoaderCallbacks<Cursor> {
         void onImagesLoaded(List<ImageFolder> imageFolders, boolean isInitLoad);
     }
 
-
-
-    // 获取 查询多媒体数据类型 数组
-    private String[] getSelect(int type){
-        String[] selectionArgs = null;
-
-        if (type == 1){
-            selectionArgs = new String[]{"video/"};
-        } else if (type == 2){
-            selectionArgs = new String[]{"video/", "image/"};
-        } else {
-            selectionArgs = new String[]{"image/"};
-        }
-
-
-        return selectionArgs;
-    }
 }
