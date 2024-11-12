@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fy.baselibrary.application.ioc.ConfigUtils;
 import com.fy.baselibrary.application.mvvm.BaseViewModel;
 import com.fy.baselibrary.application.mvvm.IBaseMVVM;
 import com.fy.baselibrary.rv.CmRecyclerView;
@@ -41,7 +43,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
     protected FrameLayout pickerBottom;         //底部布局
     protected ConstraintLayout rlHead;          //头部布局
     protected TextView tvTitle;                 //显示当前图片的位置  例如  5/31
-    protected TextView tvBack;
+    protected ImageView tvBack;
     protected TextView tvMenu;
     protected CmRecyclerView viewPager;
     protected CheckBox original_checkbox;
@@ -73,6 +75,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
         viewPager = findViewById(R.id.bannerViewPager);
         tvTitle = findViewById(R.id.tvTitle);
         tvBack = findViewById(R.id.tvBack);
+        tvBack.setImageResource(ConfigUtils.getBackImg());
         tvBack.setOnClickListener(this);
         tvMenu = findViewById(R.id.tvMenu);
 
