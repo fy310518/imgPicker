@@ -22,18 +22,13 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="标题" />
 
-    <TextView
+    <ImageView
         android:id="@+id/tvBack"
         android:layout_width="56dp"
         android:layout_height="0dp"
         android:background="@drawable/selector"
-        android:drawablePadding="4dp"
-        android:gravity="center_vertical"
-        android:padding="@dimen/spacing_medium_small"
-        android:singleLine="true"
-        android:text="@string/cancel"
-        android:textColor="@color/white"
-        android:textSize="@dimen/txt_small_much"
+        android:scaleType="center"
+        tools:src="@drawable/svg_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

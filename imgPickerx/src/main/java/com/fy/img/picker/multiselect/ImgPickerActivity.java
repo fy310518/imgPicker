@@ -10,16 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fy.baselibrary.aop.annotation.NeedPermission;
-import com.fy.baselibrary.aop.annotation.StatusBar;
+import com.fy.baselibrary.application.ioc.ConfigUtils;
 import com.fy.baselibrary.application.mvvm.BaseViewModel;
 import com.fy.baselibrary.application.mvvm.IBaseMVVM;
 import com.fy.baselibrary.base.ViewHolder;
@@ -53,7 +53,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
     private ActImgPickerBinding vdb;
 
     protected TextView tvTitle;                 //显示当前图片的位置  例如  5/31
-    protected TextView tvBack;
+    protected ImageView tvBack;
     protected TextView tvMenu;
 
     private ImageDataSource imageDataSource;
@@ -102,6 +102,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
     private void initView(ImageFolder imageFolder) {
         tvTitle = findViewById(R.id.tvTitle);
         tvBack = findViewById(R.id.tvBack);
+        tvBack.setImageResource(ConfigUtils.getBackImg());
         tvMenu = findViewById(R.id.tvMenu);
         tvBack.setOnClickListener(this);
         tvMenu.setOnClickListener(this);
