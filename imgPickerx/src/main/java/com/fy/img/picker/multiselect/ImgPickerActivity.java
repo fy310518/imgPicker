@@ -61,7 +61,7 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
     private int maxCount = 9;//最大选择数目
     private boolean isTAKE_picture;//是否显示拍照 按钮
     private boolean canPreview;//是否可以预览大图
-    private int btnEnable = Color.WHITE; // 预览，完成 按钮 可点击 颜色值
+    private int btnEnable = ResUtils.getColor(R.color.img_select_complete_txt); // 预览，完成 按钮 可点击 颜色值
     private Button btn_dir;//全部图片
     private Button btn_complete;//完成
 

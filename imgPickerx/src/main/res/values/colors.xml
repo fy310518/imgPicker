@@ -17,11 +17,17 @@
 
     <color name="black">#000000</color>
 
-    <!-- 标题栏内容颜色 -->
-    <color name="titleBarCon">#fefefe</color>
-
     <!-- 点击  背景变化 颜色 -->
     <color name="selection">#4dd6d6d6</color>
+
+    <!-- 选择图片 标题栏字体 颜色 -->
+    <color name="img_select_title">#FFFFFF</color>
+    <!-- 选择图片 预览，完成 按钮 可点击颜色 -->
+    <color name="img_select_complete_txt">#FFFFFF</color>
+    <!-- 选择图片 切换文件夹 按钮 颜色 -->
+    <color name="img_select_folder_txt">#FFFFFF</color>
+    <!-- 选择图片 完成按钮 前 分割线 颜色 -->
+    <color name="img_select_bottom_divider">#cc111111</color>
 
 
     <color name="rce_loading_data">#0099FF</color>

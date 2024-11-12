@@ -80,7 +80,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
 
 
-    implementation "com.github.fy310518:fyLibraryx:2.4.8"
+    implementation "com.github.fy310518:fyLibraryx:2.5.6"
 
     //PhotoView
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
