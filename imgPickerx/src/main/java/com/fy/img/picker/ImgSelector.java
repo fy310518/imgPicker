@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.fy.baselibrary.utils.JumpUtils;
+import com.fy.baselibrary.utils.ResUtils;
 import com.fy.bean.ImageFolder;
 import com.fy.img.picker.multiselect.ImgPickerActivity;
 import com.fy.img.picker.preview.PicturePreviewActivity;
@@ -31,7 +32,7 @@ public class ImgSelector {
 
         private int position;               // 预览图片，首先显示的图片 下标
 
-        private int btnEnable = Color.WHITE;// 预览，完成 按钮 可点击 颜色值
+        private int btnEnable = ResUtils.getColor(R.color.img_select_complete_txt);// 预览，完成 按钮 可点击 颜色值
 
 
         public Builder setUseCamera(boolean useCamera) {
