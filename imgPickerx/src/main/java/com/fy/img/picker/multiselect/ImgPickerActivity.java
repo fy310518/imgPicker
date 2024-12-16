@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -155,21 +156,19 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
 
     //初始化图片文件夹 相关
     private void initImgFolder(ImageFolder imageFolder, boolean updateId) {
-        imageDataSource = new ImageDataSource(this, updateId, selectionArgsType,null, imageFolder, new ImageDataSource.OnImagesLoadedListener() {
-            @Override
-            public void onImagesLoaded(List<ImageFolder> imageFolders, boolean isInitLoad) {
-                if (imageFolders.size() == 0 && isInitLoad) {
-                    List<ImageItem> images = new ArrayList<>();
-                    if (isTAKE_picture) {
-                        images.add(new ImageItem(0));
-                    }
-                    mImgListAdapter.refreshData(images);
-                    return;
-                } else {
-                    if (isTAKE_picture) {
-                        List<ImageItem> selectedData = mImgListAdapter.getSelectedImages();
-                        for (ImageFolder folderItem : imageFolders) {
-                            if (folderItem.images.size() > 0){
+        imageDataSource = new ImageDataSource(this, updateId, selectionArgsType, null, imageFolder, (imageFolders, isInitLoad) -> {
+            if (imageFolders.size() == 0 && isInitLoad) {
+                List<ImageItem> images = new ArrayList<>();
+                if (isTAKE_picture) {
+                    images.add(new ImageItem(0));
+                }
+                mImgListAdapter.refreshData(images);
+                return;
+            } else {
+                if (isTAKE_picture) {
+                    List<ImageItem> selectedData = mImgListAdapter.getSelectedImages();
+                    for (ImageFolder folderItem : imageFolders) {
+                        if (folderItem.images.size() > 0){
 //                                ImageItem imageItem = folderItem.images.get(0);
                                 //使 刚刚拍照的图片为选中状态
 //                                String filePath = SpfAgent.init("").getString(PickerConfig.newFilePath);
@@ -181,28 +180,27 @@ public class ImgPickerActivity extends AppCompatActivity implements IBaseMVVM<Ba
 //                                new SpfAgent(Constant.baseSpf).remove(PickerConfig.newFilePath, false);
                             }
 
-                            folderItem.images.add(0, new ImageItem(0));//添加拍照按钮
+                        folderItem.images.add(0, new ImageItem(0));//添加拍照按钮
+                        break;
+                    }
+                }
+
+                if (null != imgFolder){//当前显示的图片文件夹
+                    for (ImageFolder iFolder : imageFolders){
+                        if (iFolder.path.equals(imgFolder.path)){
+                            imgFolder = iFolder;
                             break;
                         }
                     }
-
-                    if (null != imgFolder){//当前显示的图片文件夹
-                        for (ImageFolder iFolder : imageFolders){
-                            if (iFolder.path.equals(imgFolder.path)){
-                                imgFolder = iFolder;
-                                break;
-                            }
-                        }
-                    } else {
-                        imgFolder = imageFolders.get(0);
-                    }
-                    mImgListAdapter.refreshData(imgFolder.images);
+                } else {
+                    imgFolder = imageFolders.get(0);
                 }
+                mImgListAdapter.refreshData(imgFolder.images);
+            }
 
-                if (imageFolders.size() > 0){
-                    imageFolderArray.clear();//图片文件夹 列表
-                    imageFolderArray.addAll(imageFolders);
-                }
+            if (imageFolders.size() > 0){
+                imageFolderArray.clear();//图片文件夹 列表
+                imageFolderArray.addAll(imageFolders);
             }
         });
     }
