@@ -80,8 +80,7 @@ open class ImageDataSource : LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     override fun onCreateLoader(id: Int, args: Bundle?): CursorLoader {
-        var selection = ""
-        selection = if (selectionArgsType == 2) {
+        val selection = if (selectionArgsType == 2) {
             MediaStore.Files.FileColumns.MIME_TYPE + " LIKE 'video%' OR " + MediaStore.Files.FileColumns.MIME_TYPE + " LIKE 'image%' "
         } else if (selectionArgsType == 1) {
             MediaStore.Files.FileColumns.MIME_TYPE + " LIKE 'video%' "
@@ -212,6 +211,6 @@ open class ImageDataSource : LoaderManager.LoaderCallbacks<Cursor> {
 
     /** 所有图片加载完成的回调接口  */
     interface OnImagesLoadedListener {
-        fun onImagesLoaded(imageFolders: List<ImageFolder>, isInitLoad: Boolean)
+        fun onImagesLoaded(imageFolders: ArrayList<ImageFolder>, isInitLoad: Boolean)
     }
 }

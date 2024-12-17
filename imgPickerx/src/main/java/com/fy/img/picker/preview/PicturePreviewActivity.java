@@ -32,6 +32,7 @@ import com.fy.img.picker.databinding.LayoutPreviewBinding;
 import com.fy.img.picker.folder.ImageDataSource;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -205,7 +206,7 @@ public class PicturePreviewActivity extends AppCompatActivity implements IBaseMV
     private void initImgFolder(String imgFolderPath, ImageFolder folder) {
         new ImageDataSource(this, false, selectionArgsType, imgFolderPath, folder, new ImageDataSource.OnImagesLoadedListener() {
             @Override
-            public void onImagesLoaded(List<ImageFolder> imageFolders, boolean isInitLoad) {
+            public void onImagesLoaded(@NonNull ArrayList<ImageFolder> imageFolders, boolean isInitLoad) {
                 if (imageFolders.size() > 0 ){
                     for (ImageFolder imgFolderItem : imageFolders){
                         if (!TextUtils.isEmpty(imgFolderItem.path) && imgFolderPath.equals(imgFolderItem.path)){
